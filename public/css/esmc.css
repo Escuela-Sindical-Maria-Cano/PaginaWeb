@@ -1,3 +1,22 @@
 .fondo_luchon .box:before {
     background-image: url("../assets/images/fondo_videos/luchona1.jpeg");
   }
+
+  .cid-s1YQ4DrGok .banner_masacre_bananeras {
+    background-image: url("../assets//images/luchas_banner/masacre_bananeras.jpeg");
+  }
+  .cid-s1YQ4DrGok .banner_primero_mayo {
+    background-image: url("../assets//images/luchas_banner/primero_mayo.jpeg");
+  }
+  .cid-s1YQ4DrGok .banner_paro_77 {
+    background-image: url("../assets//images/luchas_banner/paro_77.jpeg");
+  }
+  .cid-s1YQ4DrGok .banner_asotraindupalma {
+    background-image: url("../assets//images/luchas_banner/huelga_asotraindupalma.jpeg");
+  }
+  .cid-s1YQ4DrGok .banner_masacre_santabarbara {
+    background-image: url("../assets//images/luchas_banner/masacre_santa_barbara.jpeg");
+  }
+  .cid-s1YQ4DrGok .banner_huelga_avianca {
+    background-image: url("../assets//images/luchas_banner/huelga_avianca.jpeg");
+  }
