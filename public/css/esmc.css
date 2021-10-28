@@ -27,3 +27,8 @@
 .banner_sindicalismo {
     background-image: url("../assets//images/luchas_banner/sindicalismo.jpeg");
   }
+
+.boton_azul{
+    color: white !important;
+    background-color: #007bff;
+}
