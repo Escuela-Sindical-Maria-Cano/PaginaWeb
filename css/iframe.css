@@ -1,0 +1,19 @@
+    iframe, #iframelive { width: 100%; background-color: #fff }
+    #iframelive.stretched { overflow: auto }
+    *+html #iframelive.stretched { height: 100% }
+    *+html #iframelive.stretched iframe { height: 100% }
+    .opera #iframelive.stretched iframe { height: 100% }
+    #iframelive.tablet-landscape, #iframelive.tablet-portrait, #iframelive.iphone-landscape, #iframelive.iphone-portrait { height: 94%; overflow: auto }
+    #iframelive { height: 100%; background: #cfd8dc }
+    #iframelive.desktop iframe { width: 100%; margin: 0 }
+    #iframelive.desktop #frameWrapper { background: 0; margin: 0; height: 100% }
+    #iframelive.tablet-landscape #frameWrapper { background: url('../img/livedemo/ipad-album.svg?c35ed2a'); width: 1242px; height: 871px; margin: 20px auto; overflow: auto }
+    #iframelive.tablet-landscape #frameWrapper iframe { width: 1038px; height: 783px !important; margin: 44px 0 0 106px; overflow-x: hidden }
+    #iframelive.tablet-portrait iframe { width: 783px; height: 1038px !important; margin: 106px 0 0 44px }
+    #iframelive.tablet-portrait #frameWrapper { background: url('../img/livedemo/ipad.svg?c35ed2a'); width: 871px; height: 1242px; margin: 20px auto }
+    #iframelive.iphone-landscape iframe { width: 495px; height: 335px !important; margin: 20px 0 0 106px }
+    #iframelive.iphone-landscape #frameWrapper { background: url('../img/livedemo/iphone-album.svg?c35ed2a'); width: 707px; height: 370px; margin: 150px auto 20px }
+    #iframelive.iphone-portrait iframe { width: 335px; height: 495px !important; margin: 106px 0 0 20px }
+    #iframelive.iphone-portrait #frameWrapper { background: url('../img/livedemo/iphone.svg?c35ed2a'); width: 370px; height: 707px; margin: 20px auto }
+    #frameWrapper { background: none repeat scroll 0 0 transparent; height: 100%; margin: 0 }
+    #frame { position: relative; height: 100%; border: 0 }
