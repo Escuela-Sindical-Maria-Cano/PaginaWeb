@@ -36,6 +36,9 @@
   .banner_sindicalismo2_0 {
     background-image: url("../assets/images/gaceta/banner_sindicalismo20.png");
   }
+  .banner_gaceta_encabezado {
+    background-image: url("../assets/images/gaceta/encabezado.jpeg");
+  }
 
 .boton_azul{
     color: white !important;
