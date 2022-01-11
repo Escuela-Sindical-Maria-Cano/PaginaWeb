@@ -39,6 +39,9 @@
   .banner_gaceta_encabezado {
     background-image: url("../assets/images/gaceta/encabezado.jpeg");
   }
+  .banner_luchon_independiente {
+    background-image: url("../assets/images/fondo_videos/luchona2.jpeg");
+  }
 
 .boton_azul{
     color: white !important;
