@@ -12,3 +12,4 @@ Dockerfile
 docker-compose.yml
 php/config local.php
 php/config.php
+php/configure.php

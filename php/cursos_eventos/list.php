@@ -1,6 +1,6 @@
 <?php
 //including the database connection file
-include_once("../config.php");
+include_once("../configure.php");
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 $limit =5;
