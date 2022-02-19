@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $.ajax(
         {
-            url: '/php/cursos_eventos/get.php',
+            url: '/php/cursos_eventos/list.php',
             data: { limit: 3 },
             success: function (data) {
                 console.log('AJAX call was successful!');

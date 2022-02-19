@@ -1,13 +1,25 @@
 <?php
 //including the database connection file
 include_once("../config.php");
-$limit = $_GET['limit'];
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-$fetch = mysqli_query($mysqli, "SELECT * FROM cursos_eventos ORDER BY fecha DESC LIMIT $limit"); // using mysqli_query instead
+$limit =5;
+$neoLimit=  $_GET['limit'];
+if ($neoLimit >0 && $neoLimit<5){
+    $limit =$neoLimit;
+} 
+
+$stmt = mysqli_prepare($mysqli, "SELECT * FROM cursos_eventos ORDER BY fecha DESC LIMIT $limit");
+//mysqli_stmt_bind_param($stmt,'variable', $limit);
+
+/* execute query */
+mysqli_stmt_execute($stmt);
+
+$result = mysqli_stmt_get_result($stmt);
 
 $return_arr = array();
 
-while ($row = $fetch->fetch_array(MYSQLI_ASSOC)) {
+while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     $row_array['curso_evento_id'] = $row['curso_evento_id'];
     $row_array['titulo'] = $row['titulo'];
     $row_array['tipo_evento'] = $row['tipo_evento'];
