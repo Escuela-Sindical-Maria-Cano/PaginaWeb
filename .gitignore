@@ -10,6 +10,5 @@ npm-debug.log
 # Docker
 Dockerfile
 docker-compose.yml
-php/config local.php
-php/config.php
-php/configure.php
+php/config/configbd.php
+php/config/configoauth.php
