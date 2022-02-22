@@ -4,12 +4,18 @@ include_once("../config/configbd.php");
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 $limit =5;
+$offset = 0;
 $neoLimit=  $_GET['limit'];
+$neoOffset=  $_GET['ofsset'];
 if ($neoLimit >0 && $neoLimit<5){
     $limit =$neoLimit;
 } 
 
-$stmt = mysqli_prepare($mysqli, "SELECT * FROM cursos_eventos ORDER BY fecha DESC LIMIT $limit");
+if ($neoOffset >0){
+    $offset =$neoOffset;
+}
+
+$stmt = mysqli_prepare($mysqli, "SELECT * FROM cursos_eventos WHERE activo=true ORDER BY fecha DESC LIMIT $offset,$limit");
 //mysqli_stmt_bind_param($stmt,'variable', $limit);
 
 /* execute query */
@@ -32,4 +38,3 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 }
 
 echo json_encode($return_arr);
-?>
