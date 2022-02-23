@@ -88,3 +88,21 @@ body {
   .fw-semibold { font-weight: 600; }
   .lh-tight { line-height: 1.25; }
   
+  .bd-example{
+    padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    position: relative;
+    margin: 1rem -0.75rem 0;
+  }
+  .bd-content {
+    grid-area: content;
+    min-width: 1px;
+    overflow:scroll;
+  }
+  .clickeable{
+      cursor: pointer;
+  }
