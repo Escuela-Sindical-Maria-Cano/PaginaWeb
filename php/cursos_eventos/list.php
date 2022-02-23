@@ -1,18 +1,19 @@
 <?php
 //including the database connection file
 include_once("../config/configbd.php");
+include_once("../utils/session_extended.php");
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-$limit =5;
+$limit = 5;
 $offset = 0;
-$neoLimit=  $_GET['limit'];
-$neoOffset=  $_GET['ofsset'];
-if ($neoLimit >0 && $neoLimit<5){
-    $limit =$neoLimit;
-} 
+$neoLimit =  $_GET['limit'];
+$neoOffset =  $_GET['ofsset'];
+if ($neoLimit > 0 && $neoLimit < 5) {
+    $limit = $neoLimit;
+}
 
-if ($neoOffset >0){
-    $offset =$neoOffset;
+if ($neoOffset > 0) {
+    $offset = $neoOffset;
 }
 
 $stmt = mysqli_prepare($mysqli, "SELECT * FROM cursos_eventos WHERE activo=true ORDER BY fecha DESC LIMIT $offset,$limit");
@@ -34,7 +35,7 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     $row_array['descripcion'] = $row['descripcion'];
     $row_array['lugar'] = $row['lugar'];
 
-    array_push($return_arr,$row_array);
+    array_push($return_arr, $row_array);
 }
 
 echo json_encode($return_arr);
