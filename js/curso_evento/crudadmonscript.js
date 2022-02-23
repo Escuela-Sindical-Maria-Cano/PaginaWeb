@@ -111,3 +111,29 @@ function guardarEvento() {
         }
     );
 }
+
+function eliminar(id) {
+    $.ajax(
+        {
+            url: '/php/cursos_eventos/delete.php',
+            data: { id: id },
+            success: function (data) {
+                if (data === "ok") {
+                    $("#enlace-cursos-eventos")[0].click(); 
+                } else if (data.includes("location")) {
+                    var json = $.parseJSON(data);
+                    if (json.location) {
+                        window.location.href = json.location;
+                    };
+                } else {
+                    console.log('There was some error deleting entity');
+                    console.log(data);
+                }
+            },
+            error: function () {
+                console.log('There was some error performing the AJAX call!');
+            }
+        }
+    );
+
+}
