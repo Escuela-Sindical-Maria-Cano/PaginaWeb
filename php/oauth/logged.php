@@ -14,7 +14,7 @@ if (isset($_GET['code'])) {
   $email =  $google_account_info->email;
 
   // Verify if there's an account in usuarios
-  $stmt = mysqli_prepare($mysqli, "SELECT * FROM usuarios WHERE correo = ?");
+  $stmt = mysqli_prepare($mysqli, "SELECT * FROM usuarios WHERE LOWER(correo) = LOWER(?)");
   mysqli_stmt_bind_param($stmt, "s", $email);
 
   /* execute query */
