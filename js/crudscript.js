@@ -38,7 +38,7 @@ function completarCursoEvento(evento, indice) {
     $("#cursos-eventos-titulo-" + indice).html(evento["titulo"]);
     $("#cursos-eventos-lugar-" + indice).html(evento["lugar"]);
     $("#cursos-eventos-horario-" + indice).html(evento["fecha"]);
-    $("#cursos-eventos-cursos-eventos-masinfo-" + indice).attr("href", "cursos_y_eventos/id/" + evento["curso_evento_id"]);
+    $("#cursos-eventos-masinfo-" + indice).attr("href", "cursos_y_eventos/obtener.html?id=" + evento["curso_evento_id"]);
 
     $("#cursos-evento-skeleton-" + indice).addClass("d-none");
     $("#cursos-evento-card-" + indice).removeClass("d-none");
