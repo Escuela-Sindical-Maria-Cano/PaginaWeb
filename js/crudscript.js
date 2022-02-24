@@ -2,11 +2,9 @@ $(document).ready(function () {
     $.ajax(
         {
             url: '/php/oauth/get.php',
-            data: { limit: 3 },
             success: function (data) {
                 var json = $.parseJSON(data);
-               $("#login").attr("href", json.href)
-               console.log('Data from the server' + json.href);
+               $("#login").attr("href", json.href);
             },
             error: function () {
                 console.log('There was some error performing the AJAX call!');
