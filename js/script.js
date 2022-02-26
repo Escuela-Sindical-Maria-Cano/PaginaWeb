@@ -23,6 +23,20 @@ function findGetParameter(parameterName) {
     return result;
 }
 
+function parsearEvento(tipoEvento) {
+    var resultado = "Evento";
+    if (tipoEvento === "stream") {
+        resultado = "Live";
+    } else if (tipoEvento === "historia") {
+        resultado = "Conmemoración";
+    } else if (tipoEvento === "curso") {
+        resultado = "Curso";
+    } else if (tipoEvento === "prostesta") {
+        resultado = "Protesta";
+    }
+    return resultado;
+}
+
 function parsearParrafos(parrafos){
     return parrafos.replaceAll("\n", "<br/>");
 }

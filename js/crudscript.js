@@ -43,17 +43,3 @@ function completarCursoEvento(evento, indice) {
     $("#cursos-evento-skeleton-" + indice).addClass("d-none");
     $("#cursos-evento-card-" + indice).removeClass("d-none");
 }
-
-function parsearEvento(tipoEvento) {
-    var resultado = "Evento";
-    if (tipoEvento === "stream") {
-        resultado = "Live";
-    } else if (tipoEvento === "historia") {
-        resultado = "Conmemoración";
-    } else if (tipoEvento === "curso") {
-        resultado = "Curso";
-    } else if (tipoEvento === "prostesta") {
-        resultado = "Protesta";
-    }
-    return resultado;
-}

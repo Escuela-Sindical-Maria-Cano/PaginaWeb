@@ -49,7 +49,9 @@ function editar(id) {
                 $("#fecha_evento").val(json.fecha);
                 $("#lugar_evento").val(json.lugar);
                 $("#descripcion_evento").val(json.descripcion);
-                $("#imagen_evento").html('<img src="' + json.url_imagen + '" class="img-fluid">');
+                $("#cursos-eventos-imagen-0").css("background-image", "url(" + json.url_imagen + ")");
+                json.url_imagen = '';
+                completarCursoEvento(json, 0);
                 $("#editar").removeClass("d-none");
             },
             error: function () {
@@ -71,6 +73,14 @@ function agregarNuevoCursoEvento() {
     $("#imagen_evento").html('');
     $("#editar").removeClass("d-none");
     $("#problema_creando_Evento").addClass("d-none");
+    var json = new Object();
+    json.tipo_evento = "stream";
+    json.titulo = "Título";
+    json.fecha = 'fecha';
+    json.lugar = 'lugar';
+    json.url_imagen = '';
+    completarCursoEvento(json, 0);
+    $("#cursos-eventos-imagen-0").css("background-image", "url(/assets/images/escuela/logoOvalletrasblancas.png)");
 }
 
 function guardarEvento() {
@@ -93,7 +103,7 @@ function guardarEvento() {
             processData: false,
             success: function (data) {
                 if (data === "ok") {
-                    $("#enlace-cursos-eventos")[0].click(); 
+                    $("#enlace-cursos-eventos")[0].click();
                 } else if (data.includes("location")) {
                     var json = $.parseJSON(data);
                     if (json.location) {
@@ -119,7 +129,7 @@ function eliminar(id) {
             data: { id: id },
             success: function (data) {
                 if (data === "ok") {
-                    $("#enlace-cursos-eventos")[0].click(); 
+                    $("#enlace-cursos-eventos")[0].click();
                 } else if (data.includes("location")) {
                     var json = $.parseJSON(data);
                     if (json.location) {
@@ -136,4 +146,31 @@ function eliminar(id) {
         }
     );
 
+}
+
+function cambiarValorInput($this, id) {
+    $("#" + id).html($($this).val());
+}
+
+function cambiarValorSelect($this, id) {
+    var tipoEvento = parsearEvento($($this).val());
+    $("#" + id).html(tipoEvento);
+}
+
+function cambiarValorImagen($this) {
+    var files = !!$this.files ? $this.files : [];
+    console.log(files.length);
+    console.log(window.FileReader);
+    if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+    console.log("2");
+    if (/^image/.test(files[0].type)) { // only image file
+        var reader = new FileReader(); // instance of the FileReader
+        reader.readAsDataURL(files[0]); // read the local file
+
+        reader.onloadend = function () { // set image data as background of div
+            //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+            $("#cursos-eventos-imagen-0").css("background-image", "url(" + this.result + ")");
+        }
+        console.log("3");
+    }
 }

@@ -9,8 +9,8 @@ $(document).ready(function () {
                 $("#curso_evento_logo").attr("src", seleccionarIcono(json.tipo_evento));
                 $("#titulo_evento").html(json.titulo);
                 $("#horario_evento").html(json.fecha);
-                $("#imagen_evento").attr("src", json.url_imagen);
                 $("#descripcion_evento").html(parsearParrafos(json.descripcion));
+                completarCursoEvento(json,0);
             },
             error: function () {
                 console.log('There was some error performing the AJAX call!');
