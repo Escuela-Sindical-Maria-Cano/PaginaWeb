@@ -20,9 +20,9 @@ $(document).ready(function () {
                 var evento1 = json[0];
                 var evento2 = json[1];
                 var evento3 = json[2];
-                completarCursoEvento(evento1, 1);
+                completarCursoEvento(evento3, 1);
                 completarCursoEvento(evento2, 2);
-                completarCursoEvento(evento3, 3);
+                completarCursoEvento(evento1, 3);
             },
             error: function () {
                 console.log('There was some error performing the AJAX call!');
