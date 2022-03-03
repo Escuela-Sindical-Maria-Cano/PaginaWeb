@@ -54,6 +54,18 @@ function editar(id) {
                 json.url_imagen = '';
                 completarCursoEvento(json, 0);
                 $("#editar").removeClass("d-none");
+                $('#descripcion_evento').summernote({
+                    placeholder: 'Describir el curso o evento',
+                    tabsize: 2,
+                    height: 200,
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'clear']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['view', ['codeview', 'help']]
+                      ]
+                  });
             },
             error: function () {
                 console.log('There was some error performing the AJAX call!');
