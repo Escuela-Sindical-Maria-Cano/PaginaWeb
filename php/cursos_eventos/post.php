@@ -13,18 +13,19 @@ if (0 < $_FILES['imagen_evento']['error']) {
     $titulo =  $_POST['titulo_evento'];
     $fecha =  $_POST['fecha_evento'];
     $tipo_evento =  $_POST['tipo_evento'];
+    $fecha_legible =  $_POST['fecha_legible_evento'];
     $descripcion =  $_POST['descripcion_evento'];
     $lugar =  $_POST['lugar_evento'];
-    $id =  $_POST['id'];   
-    
-    if (empty( $_FILES['imagen_evento']['name'])) {
+    $id =  $_POST['id'];
+
+    if (empty($_FILES['imagen_evento']['name'])) {
         //Subir datos
         if (empty($id)) {
-            $stmt = mysqli_prepare($mysqli, "INSERT INTO cursos_eventos (titulo, fecha, tipo_evento, descripcion, lugar) VALUES (?, ?, ?, ?, ?, ?)");
-            mysqli_stmt_bind_param($stmt, "sssss", $titulo, $fecha, $tipo_evento, $descripcion, $lugar);
+            $stmt = mysqli_prepare($mysqli, "INSERT INTO cursos_eventos (titulo, fecha,fecha_legible, tipo_evento, descripcion, lugar) VALUES (?, ?, ?, ?, ?, ?)");
+            mysqli_stmt_bind_param($stmt, "sssss", $titulo, $fecha, $fecha_legible, $tipo_evento, $descripcion, $lugar);
         } else {
-            $stmt = mysqli_prepare($mysqli, "UPDATE cursos_eventos SET titulo=? , fecha= ?, tipo_evento = ?, descripcion = ?, lugar = ? WHERE curso_evento_id = ?");
-            mysqli_stmt_bind_param($stmt, "sssssi", $titulo, $fecha, $tipo_evento, $descripcion, $lugar, $id);
+            $stmt = mysqli_prepare($mysqli, "UPDATE cursos_eventos SET titulo=? , fecha= ?, fecha_legible =?, tipo_evento = ?, descripcion = ?, lugar = ? WHERE curso_evento_id = ?");
+            mysqli_stmt_bind_param($stmt, "sssssi", $titulo, $fecha, $fecha_legible, $tipo_evento, $descripcion, $lugar, $id);
         }
     } else {
         //Subir archivo
@@ -37,15 +38,15 @@ if (0 < $_FILES['imagen_evento']['error']) {
 
         //Subir datos
         if (empty($id)) {
-            $stmt = mysqli_prepare($mysqli, "INSERT INTO cursos_eventos (titulo, fecha, url_imagen, tipo_evento, descripcion, lugar) VALUES (?, ?, ?, ?, ?, ?)");
-            mysqli_stmt_bind_param($stmt, "ssssss", $titulo, $fecha, $location, $tipo_evento, $descripcion, $lugar);
+            $stmt = mysqli_prepare($mysqli, "INSERT INTO cursos_eventos (titulo, fecha, fecha_legible, url_imagen, tipo_evento, descripcion, lugar) VALUES (?, ?, ?, ?, ?, ?)");
+            mysqli_stmt_bind_param($stmt, "ssssss", $titulo, $fecha, $fecha_legible, $location, $tipo_evento, $descripcion, $lugar);
         } else {
-            $stmt = mysqli_prepare($mysqli, "UPDATE cursos_eventos SET titulo=? , fecha= ?, url_imagen = ?,tipo_evento = ?, descripcion = ?, lugar = ? WHERE curso_evento_id = ?");
-            mysqli_stmt_bind_param($stmt, "ssssssi", $titulo, $fecha, $location, $tipo_evento, $descripcion, $lugar, $id);
+            $stmt = mysqli_prepare($mysqli, "UPDATE cursos_eventos SET titulo=? , fecha= ?, fecha_legible =?, url_imagen = ?,tipo_evento = ?, descripcion = ?, lugar = ? WHERE curso_evento_id = ?");
+            mysqli_stmt_bind_param($stmt, "ssssssi", $titulo, $fecha, $fecha_legible, $location, $tipo_evento, $descripcion, $lugar, $id);
         }
     }
     /* execute query */
     mysqli_stmt_execute($stmt);
-    
+
     echo 'ok';
 }

@@ -31,6 +31,7 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     $row_array['titulo'] = $row['titulo'];
     $row_array['tipo_evento'] = $row['tipo_evento'];
     $row_array['fecha'] = $row['fecha'];
+    $row_array['fecha_legible'] = $row['fecha_legible'];
     $row_array['url_imagen'] = $row['url_imagen'];
     $row_array['descripcion'] = $row['descripcion'];
     $row_array['lugar'] = $row['lugar'];
