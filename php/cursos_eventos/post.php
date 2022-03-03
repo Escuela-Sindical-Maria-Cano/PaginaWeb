@@ -22,10 +22,10 @@ if (0 < $_FILES['imagen_evento']['error']) {
         //Subir datos
         if (empty($id)) {
             $stmt = mysqli_prepare($mysqli, "INSERT INTO cursos_eventos (titulo, fecha,fecha_legible, tipo_evento, descripcion, lugar) VALUES (?, ?, ?, ?, ?, ?)");
-            mysqli_stmt_bind_param($stmt, "sssss", $titulo, $fecha, $fecha_legible, $tipo_evento, $descripcion, $lugar);
+            mysqli_stmt_bind_param($stmt, "ssssss", $titulo, $fecha, $fecha_legible, $tipo_evento, $descripcion, $lugar);
         } else {
             $stmt = mysqli_prepare($mysqli, "UPDATE cursos_eventos SET titulo=? , fecha= ?, fecha_legible =?, tipo_evento = ?, descripcion = ?, lugar = ? WHERE curso_evento_id = ?");
-            mysqli_stmt_bind_param($stmt, "sssssi", $titulo, $fecha, $fecha_legible, $tipo_evento, $descripcion, $lugar, $id);
+            mysqli_stmt_bind_param($stmt, "ssssssi", $titulo, $fecha, $fecha_legible, $tipo_evento, $descripcion, $lugar, $id);
         }
     } else {
         //Subir archivo
@@ -39,10 +39,10 @@ if (0 < $_FILES['imagen_evento']['error']) {
         //Subir datos
         if (empty($id)) {
             $stmt = mysqli_prepare($mysqli, "INSERT INTO cursos_eventos (titulo, fecha, fecha_legible, url_imagen, tipo_evento, descripcion, lugar) VALUES (?, ?, ?, ?, ?, ?)");
-            mysqli_stmt_bind_param($stmt, "ssssss", $titulo, $fecha, $fecha_legible, $location, $tipo_evento, $descripcion, $lugar);
+            mysqli_stmt_bind_param($stmt, "sssssss", $titulo, $fecha, $fecha_legible, $location, $tipo_evento, $descripcion, $lugar);
         } else {
             $stmt = mysqli_prepare($mysqli, "UPDATE cursos_eventos SET titulo=? , fecha= ?, fecha_legible =?, url_imagen = ?,tipo_evento = ?, descripcion = ?, lugar = ? WHERE curso_evento_id = ?");
-            mysqli_stmt_bind_param($stmt, "ssssssi", $titulo, $fecha, $fecha_legible, $location, $tipo_evento, $descripcion, $lugar, $id);
+            mysqli_stmt_bind_param($stmt, "sssssssi", $titulo, $fecha, $fecha_legible, $location, $tipo_evento, $descripcion, $lugar, $id);
         }
     }
     /* execute query */

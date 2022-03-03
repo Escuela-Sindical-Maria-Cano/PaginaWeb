@@ -47,6 +47,7 @@ function editar(id) {
                 $("#tipo_evento").val(json.tipo_evento).change();
                 $("#titulo_evento").val(json.titulo);
                 $("#fecha_evento").val(json.fecha);
+                $("#fecha_legible_evento").val(json.fecha_legible);
                 $("#lugar_evento").val(json.lugar);
                 $("#descripcion_evento").val(json.descripcion);
                 $("#cursos-eventos-imagen-0").css("background-image", "url(" + json.url_imagen + ")");
@@ -68,6 +69,7 @@ function agregarNuevoCursoEvento() {
     $("#tipo_evento").val("streaming").change();
     $("#titulo_evento").val("");
     $("#fecha_evento").val("");
+    $("#fecha_legible_evento").val("");
     $("#lugar_evento").val("");
     $("#descripcion_evento").val("");
     $("#imagen_evento").html('');
@@ -77,6 +79,7 @@ function agregarNuevoCursoEvento() {
     json.tipo_evento = "stream";
     json.titulo = "Título";
     json.fecha = 'fecha';
+    json.fecha_legible = 'fecha';
     json.lugar = 'lugar';
     json.url_imagen = '';
     completarCursoEvento(json, 0);
@@ -89,6 +92,7 @@ function guardarEvento() {
     data.append('tipo_evento', $("#tipo_evento").val());
     data.append('titulo_evento', $("#titulo_evento").val());
     data.append('fecha_evento', $("#fecha_evento").val());
+    data.append('fecha_legible_evento', $("#fecha_legible_evento").val());
     data.append('lugar_evento', $("#lugar_evento").val());
     data.append('descripcion_evento', $("#descripcion_evento").val());
     data.append('id', $("#editar").attr("idCursoEvento"));
