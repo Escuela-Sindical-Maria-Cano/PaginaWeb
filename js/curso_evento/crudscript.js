@@ -8,8 +8,9 @@ $(document).ready(function () {
                 $("#actual_curso_evento").html(json.titulo);
                 $("#curso_evento_logo").attr("src", seleccionarIcono(json.tipo_evento));
                 $("#titulo_evento").html(json.titulo);
-                $("#horario_evento").html(json.fecha);
+                $("#horario_evento").html(json.fecha_legible);
                 $("#descripcion_evento").html(parsearParrafos(json.descripcion));
+                $("#imagen_evento").attr("src", json.url_imagen);
                 completarCursoEvento(json,0);
             },
             error: function () {
