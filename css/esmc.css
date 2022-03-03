@@ -42,6 +42,9 @@
   .banner_luchon_independiente {
     background-image: url("../assets/images/fondo_videos/luchona2.jpeg");
   }
+  .banner_mujer_2022 {
+    background-image: url("../banner_carrusel/dia_mujer_2022.png");
+  }
 
 .boton_azul{
     color: white !important;
