@@ -1812,7 +1812,7 @@ a {
   transition: all 0.3s;
 }
 .cid-s1YTm1ANEj {
-  padding-top: 135px;
+  padding-top: 180px;
   padding-bottom: 15px;
   background-color: #232323;
 }
@@ -3414,7 +3414,9 @@ a {
   color: #ffffff;
 }
 .cid-s1YU1gQIo8 {
-  padding-top: 645px;
+  background: black;
+  padding-top: 40%;
+  background-size: contain;
   background-image: url("../../../assets/images/background1.jpg");
 }
 .cid-s1YU1gQIo8 H2 {
@@ -3434,7 +3436,7 @@ a {
 }
 .cid-s1YU1gQIo8 .mbr-overlay {
   background-color: transparent!important;
-  background: linear-gradient(to top, #000000, transparent);
+  background: linear-gradient(to top, #000000, transparent 200%);
 }
 .cid-s1YU1AZk89 {
   padding-top: 60px;
