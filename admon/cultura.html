@@ -84,12 +84,12 @@
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="/admon/cursos_eventos_editar.html" class="nav-link active" aria-current="page" id="enlace-cursos-eventos">
+                    <a href="/admon/cursos_eventos_editar.html" class="nav-link text-white" aria-current="page" id="enlace-cursos-eventos">
                         Cursos y Eventos
                     </a>
                 </li>
                 <li>
-                    <a href="/admon/cultura.html" class="nav-link text-white">
+                    <a href="/admon/cultura.html" class="nav-link active">
                         Cultura y música proletaria
                     </a>
                 </li>
@@ -117,10 +117,9 @@
         <div class="b-example-divider"></div>
 
         <div class="bd-content ps-lg-4 w-100">
-            <h3>Editar Cursos y Eventos</h3>
-            <p>Los últimos 3 cursos y eventos, ordenados por fecha, serán presentados en la página inicial</p>
-            <button type="button" class="btn btn-primary" onclick="agregarNuevoCursoEvento()">Agregar nuevo curso o
-                evento</button>
+            <h3>Editar Cultura y Música Proletaria</h3>
+            <p>Las publicaciones se presentarán en el orden cronólogico.</p>
+            <button type="button" class="btn btn-primary" onclick="agregarNuevoArtista()">Agregar nuevo Artista o Grupo</button>
             <div class="bd-example">
                 <table id="lista_examinar" class="table table-striped table-hover">
                     <thead>
@@ -142,55 +141,38 @@
             <div id="editar" class="row d-none">
                 <div class="col-8 p-3">
                     <form>
-                        <h4>Editar el curso o evento</h4>
+                        <h4>Editar el Artista o Grupo</h4>
                         <div class="form-group">
-                            <label>Tipo de Evento</label>
+                            <label>Género</label>
                             <select class="form-control" id="tipo_evento" onchange="cambiarValorSelect(this,'cursos-eventos-tipo-0')">
-                                <option value="historia">Conmemoración Histórica</option>
-                                <option value="curso">Curso o Evento educativo</option>
-                                <option value="prostesta">Protesta</option>
-                                <option value="stream">Streaming</option>
+                                <option value="prostesta">Canción Protesta</option>
+                                <option value="folcorica">Folclórica</option>
+                                <option value="rock">Rock</option>
+                                <option value="rap">Rap</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Título</label>
-                            <input type="input" id="titulo_evento" class="form-control" onfocusout="cambiarValorInput(this,'cursos-eventos-titulo-0')">
+                            <label>Nombre del artista o grupo</label>
+                            <input type="input" id="nombre_artista" class="form-control" onfocusout="cambiarValorInput(this,'cursos-eventos-titulo-0')">
                         </div>
                         <div class="form-group">
-                            <label>Fecha Inicio</label>
-                            <input type="text" id="fecha_evento" class="form-control">
+                            <label>Nacionalidad</label>
+                            <input type="text" id="nacionalidad_artista" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Fecha Legible</label>
-                            <input type="text" id="fecha_legible_evento" class="form-control" onfocusout="cambiarValorInput(this,'cursos-eventos-horario-0')">
-                        </div>
-                        <div class="form-group">
-                            <label>Lugar</label>
-                            <input type="input" id="lugar_evento" class="form-control" onfocusout="cambiarValorInput(this,'cursos-eventos-lugar-0')">
+                            <label>Página Web Oficial</label>
+                            <input type="text" id="pagina_web_artista" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Descripción</label>
-                            <textarea id="descripcion_evento" name="editordata"></textarea>
+                            <textarea id="descripcion_artista" name="editordata" onfocusout="cambiarValorInput(this,'cursos-eventos-horario-0')"></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Imagen</label>
-                            <input type="file" class="form-control" id="image_file_evento" onChange="cambiarValorImagen(this)" />
-                            <div class="form-text">Usar sólo si desea subir una imagen o cambiar la existente</div>
+                            <label>URL de la playlist de youtube</label>
+                            <input type="input" id="playlist_artista" class="form-control" onfocusout="cambiarValorInput(this,'cursos-eventos-lugar-0')">
                         </div>
                         <button type="button" class="btn btn-primary mt-3" onclick="guardarEvento()">Guardar
                             Evento</button>
-                        <div class="alert alert-danger d-none" role="alert" id="problema_creando_Evento">
-                            <h4 class="alert-heading">Tuvimos un problema!</h4>
-                            <p>No pudimos crear el evento, por favor probar lo siguiente:
-                                <ul>
-                                    <li>Probar con una imagen con menor tamaño</li>
-                                    <li>Verificar el tipo de la imagen (png, jpeg, jpg, gif)</li>
-                                </ul>
-                            </p>
-
-                            <hr>
-                            <p class="mb-0">Si este problema persiste por favor comunicarse con el/la administradora de la página.</p>
-                        </div>
                     </form>
                 </div>
                 <div class="col-4">
