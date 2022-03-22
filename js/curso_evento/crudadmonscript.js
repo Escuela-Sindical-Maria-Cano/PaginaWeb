@@ -1,77 +1,73 @@
-$(document).ready(function () {
-    $.ajax(
-        {
-            url: '/php/cursos_eventos/list.php',
-            data: { limit: 10, ofsset: 0 },
-            success: function (data) {
-                var json = $.parseJSON(data);
-                $(json).each(
-                    function () {
-                        $('#lista_examinar > tbody').append(
-                            '<tr><td>' + this.tipo_evento
-                            + '</td><td>'
-                            + this.titulo
-                            + '</td><td>'
-                            + this.fecha
-                            + '</td><td>'
-                            + this.lugar
-                            + '</td><td>'
-                            + recortar(this.descripcion, 200)
-                            + '</td><td class="text-center">'
-                            + '<span class="clickeable fa-solid fa-pen-to-square" onClick="editar(' + this.curso_evento_id + ')"></span>'
-                            + '</td><td class="text-center">'
-                            + '<span class="clickeable fa-solid fa-trash" onClick="eliminar(' + this.curso_evento_id + ')"></span>'
-                            + '</td></tr>')
-                    });
-            },
-            error: function () {
-                console.log('There was some error performing the AJAX call!');
-            }
+$(document).ready(function() {
+    $.ajax({
+        url: '/php/cursos_eventos/list.php',
+        data: { limit: 10, ofsset: 0 },
+        success: function(data) {
+            var json = $.parseJSON(data);
+            $(json).each(
+                function() {
+                    $('#lista_examinar > tbody').append(
+                        '<tr><td>' + this.tipo_evento +
+                        '</td><td>' +
+                        this.titulo +
+                        '</td><td>' +
+                        this.fecha +
+                        '</td><td>' +
+                        this.lugar +
+                        '</td><td>' +
+                        recortar(this.descripcion, 200) +
+                        '</td><td class="text-center">' +
+                        '<span class="clickeable fa-solid fa-pen-to-square" onClick="editar(' + this.curso_evento_id + ')"></span>' +
+                        '</td><td class="text-center">' +
+                        '<span class="clickeable fa-solid fa-trash" onClick="eliminar(' + this.curso_evento_id + ')"></span>' +
+                        '</td></tr>')
+                });
+        },
+        error: function() {
+            console.log('There was some error performing the AJAX call!');
         }
-    );
+    });
 
     $('#fecha_evento').datetimepicker();
+    $('#descripcion_evento').summernote({
+        placeholder: 'Describir el curso o evento',
+        tabsize: 2,
+        height: 200,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['view', ['codeview', 'help']]
+        ]
+    });
 
 })
 
 function editar(id) {
     $("#editar").addClass("d-none");
     $("#problema_creando_Evento").addClass("d-none");
-    $.ajax(
-        {
-            url: '/php/cursos_eventos/get.php',
-            data: { id: id },
-            success: function (data) {
-                var json = $.parseJSON(data);
-                $("#editar").attr("idCursoEvento", json.curso_evento_id);
-                $("#tipo_evento").val(json.tipo_evento).change();
-                $("#titulo_evento").val(json.titulo);
-                $("#fecha_evento").val(json.fecha);
-                $("#fecha_legible_evento").val(json.fecha_legible);
-                $("#lugar_evento").val(json.lugar);
-                $("#descripcion_evento").val(json.descripcion);
-                $("#cursos-eventos-imagen-0").css("background-image", "url(" + json.url_imagen + ")");
-                json.url_imagen = '';
-                completarCursoEvento(json, 0);
-                $("#editar").removeClass("d-none");
-                $('#descripcion_evento').summernote({
-                    placeholder: 'Describir el curso o evento',
-                    tabsize: 2,
-                    height: 200,
-                    toolbar: [
-                        ['style', ['style']],
-                        ['font', ['bold', 'clear']],
-                        ['color', ['color']],
-                        ['para', ['ul', 'ol', 'paragraph']],
-                        ['view', ['codeview', 'help']]
-                      ]
-                  });
-            },
-            error: function () {
-                console.log('There was some error performing the AJAX call!');
-            }
+    $.ajax({
+        url: '/php/cursos_eventos/get.php',
+        data: { id: id },
+        success: function(data) {
+            var json = $.parseJSON(data);
+            $("#editar").attr("idCursoEvento", json.curso_evento_id);
+            $("#tipo_evento").val(json.tipo_evento).change();
+            $("#titulo_evento").val(json.titulo);
+            $("#fecha_evento").val(json.fecha);
+            $("#fecha_legible_evento").val(json.fecha_legible);
+            $("#lugar_evento").val(json.lugar);
+            $('#descripcion_evento').summernote('code', json.descripcion);
+            $("#cursos-eventos-imagen-0").css("background-image", "url(" + json.url_imagen + ")");
+            json.url_imagen = '';
+            completarCursoEvento(json, 0);
+            $("#editar").removeClass("d-none");
+        },
+        error: function() {
+            console.log('There was some error performing the AJAX call!');
         }
-    );
+    });
 
 }
 
@@ -83,7 +79,7 @@ function agregarNuevoCursoEvento() {
     $("#fecha_evento").val("");
     $("#fecha_legible_evento").val("");
     $("#lugar_evento").val("");
-    $("#descripcion_evento").val("");
+    $('#descripcion_evento').summernote('code', '');
     $("#imagen_evento").html('');
     $("#editar").removeClass("d-none");
     $("#problema_creando_Evento").addClass("d-none");
@@ -109,58 +105,54 @@ function guardarEvento() {
     data.append('descripcion_evento', $("#descripcion_evento").val());
     data.append('id', $("#editar").attr("idCursoEvento"));
 
-    $.ajax(
-        {
-            url: '/php/cursos_eventos/post.php',
-            method: 'POST',
-            data: data,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                if (data === "ok") {
-                    $("#enlace-cursos-eventos")[0].click();
-                } else if (data.includes("location")) {
-                    var json = $.parseJSON(data);
-                    if (json.location) {
-                        window.location.href = json.location;
-                    };
-                } else {
-                    $("#problema_creando_Evento").removeClass("d-none");
-                    console.log(data);
-                }
-            },
-            error: function () {
-                $("#problema_creando_Evento").removeClass("d-none")
-                console.log('There was some error performing the AJAX call!');
+    $.ajax({
+        url: '/php/cursos_eventos/post.php',
+        method: 'POST',
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+            if (data === "ok") {
+                $("#enlace-cursos-eventos")[0].click();
+            } else if (data.includes("location")) {
+                var json = $.parseJSON(data);
+                if (json.location) {
+                    window.location.href = json.location;
+                };
+            } else {
+                $("#problema_creando_Evento").removeClass("d-none");
+                console.log(data);
             }
+        },
+        error: function() {
+            $("#problema_creando_Evento").removeClass("d-none")
+            console.log('There was some error performing the AJAX call!');
         }
-    );
+    });
 }
 
 function eliminar(id) {
-    $.ajax(
-        {
-            url: '/php/cursos_eventos/delete.php',
-            data: { id: id },
-            success: function (data) {
-                if (data === "ok") {
-                    $("#enlace-cursos-eventos")[0].click();
-                } else if (data.includes("location")) {
-                    var json = $.parseJSON(data);
-                    if (json.location) {
-                        window.location.href = json.location;
-                    };
-                } else {
-                    console.log('There was some error deleting entity');
-                    console.log(data);
-                }
-            },
-            error: function () {
-                console.log('There was some error performing the AJAX call!');
+    $.ajax({
+        url: '/php/cursos_eventos/delete.php',
+        data: { id: id },
+        success: function(data) {
+            if (data === "ok") {
+                $("#enlace-cursos-eventos")[0].click();
+            } else if (data.includes("location")) {
+                var json = $.parseJSON(data);
+                if (json.location) {
+                    window.location.href = json.location;
+                };
+            } else {
+                console.log('There was some error deleting entity');
+                console.log(data);
             }
+        },
+        error: function() {
+            console.log('There was some error performing the AJAX call!');
         }
-    );
+    });
 
 }
 
@@ -183,7 +175,7 @@ function cambiarValorImagen($this) {
         var reader = new FileReader(); // instance of the FileReader
         reader.readAsDataURL(files[0]); // read the local file
 
-        reader.onloadend = function () { // set image data as background of div
+        reader.onloadend = function() { // set image data as background of div
             //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
             $("#cursos-eventos-imagen-0").css("background-image", "url(" + this.result + ")");
         }
