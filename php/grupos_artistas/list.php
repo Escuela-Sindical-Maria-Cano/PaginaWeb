@@ -16,7 +16,7 @@ if ($neoOffset > 0) {
     $offset = $neoOffset;
 }
 
-$stmt = mysqli_prepare($mysqli, "SELECT * FROM grupos_artistas WHERE activo=true LIMIT $offset,$limit");
+$stmt = mysqli_prepare($mysqli, "SELECT * FROM grupos_artistas WHERE activo=true ORDER BY grupos_artistas_id DESC LIMIT $offset,$limit");
 
 /* execute query */
 mysqli_stmt_execute($stmt);

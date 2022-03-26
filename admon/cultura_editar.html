@@ -22,6 +22,7 @@
 
 
     <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/css/blog_style.css" type="text/css">
     <link rel="stylesheet" href="/assets/mdb/css/mdb.min.css" type="text/css" />
     <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
     <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css">
@@ -142,7 +143,7 @@
                         <h4>Editar el Artista o Grupo</h4>
                         <div class="form-group">
                             <label>Género</label>
-                            <select class="form-control" id="genero_artista" onchange="cambiarValorSelect(this,'cursos-eventos-tipo-0')">
+                            <select class="form-control" id="genero_artista" onchange="cambiarValorSelect(this,'genero')">
                                 <option value="protesta">Canción Protesta</option>
                                 <option value="folclorica">Folclórica</option>
                                 <option value="rock">Rock</option>
@@ -151,11 +152,11 @@
                         </div>
                         <div class="form-group">
                             <label>Nombre del artista o grupo</label>
-                            <input type="input" id="nombre_artista" class="form-control" onfocusout="cambiarValorInput(this,'cursos-eventos-titulo-0')">
+                            <input type="input" id="nombre_artista" class="form-control" onfocusout="cambiarValorInput(this,'nombre')">
                         </div>
                         <div class="form-group">
-                            <label>Nacionalidad</label>
-                            <input type="text" id="nacionalidad_artista" class="form-control">
+                            <label>País de Origen</label>
+                            <input type="text" id="nacionalidad_artista" class="form-control" onfocusout="cambiarValorInput(this,'nacionalidad')">
                         </div>
                         <div class="form-group">
                             <label>Página Web Oficial</label>
@@ -163,11 +164,11 @@
                         </div>
                         <div class="form-group">
                             <label>Descripción</label>
-                            <textarea id="descripcion_artista" name="editordata" onfocusout="cambiarValorInput(this,'cursos-eventos-horario-0')"></textarea>
+                            <textarea id="descripcion_artista" name="editordata"></textarea>
                         </div>
                         <div class="form-group">
                             <label>URL de la playlist de youtube</label>
-                            <input type="input" id="playlist_artista" class="form-control" onfocusout="cambiarValorInput(this,'cursos-eventos-lugar-0')">
+                            <input type="input" id="playlist_artista" class="form-control" onfocusout="cambiarVideoYoutube(this)">
                         </div>
                         <button type="button" class="btn btn-primary mt-3" onclick="guardarGrupoArtista()">Guardar
                             Artista o Grupo</button>
@@ -182,30 +183,23 @@
                 <div class="col-4">
                     <h5>Previo</h5>
                     <div class="row justify-content-center cid-s1YM3FtOOn  mbr-white">
-                        <div class="card md-pb first col-12">
-                            <div class="card-wrapper align-center" id="cursos-evento-card-0">
-                                <div class="card-box align-center">
-                                    <h4 class="mbr-section-title pb-2 mbr-semibold mbr-fonts-style display-6" id="cursos-eventos-tipo-0">Live</h4>
-
-                                    <div class="img-wrapper">
-                                        <div id="cursos-eventos-imagen-0"></div>
-                                    </div>
-                                    <p class="mbr-section-text align-center mbr-regular mbr-bold pb-2 mbr-fonts-style display-5" id="cursos-eventos-titulo-0">
-                                        ... </p>
-                                    <p class="mbr-section-text align-center mbr-regular pb-2 mbr-fonts-style display-7">
-                                        <span class="mobi-mbri mobi-mbri-map-pin mbr-iconfont mbr-iconfont-btn"></span>
-                                        <span id="cursos-eventos-lugar-0">...</span><br />
-                                        <span class="mobi-mbri mobi-mbri-calendar mbr-iconfont mbr-iconfont-btn"></span>
-                                        <span id="cursos-eventos-horario-0">...</span>
-                                    </p>
-                                </div>
-                                <div class="mbr-section-btn">
-                                    <a id="cursos-eventos-masinfo-0" class="btn btn-sm btn-primary display-4" href="cursos_y_eventos/index.html#envivo_30_minutos_2022">
-                                        <span class="mobi-mbri mobi-mbri-right mbr-iconfont mbr-iconfont-btn"></span>+ Info
-                                    </a>
-                                </div>
+                        <article class="blog_item" id="artista_example">
+                            <div class="blog_item_img">
+                                <div class="embed-container" style="min-height: 200px;"></div>
+                                <a href="#" class="blog_item_date enlace">
+                                    <h3 id="nombre">Nombre Artista</h3>
+                                    <p id="nacionalidad">País</p>
+                                </a>
                             </div>
-                        </div>
+                            <div class="blog_details">
+                                <a class="d-inline-block enlace" href="#">
+                                    <h2 id="genero">Género</h2>
+                                </a>
+                                <p id="descripcion">Descripción.</p>
+                                <a class="btn btn-sm btn-primary display-4 ripple-surface enlace" href="#" style="min-width: 135px;">
+                                    <span class="mobi-mbri mobi-mbri-right mbr-iconfont mbr-iconfont-btn"></span>+ Info</a>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>

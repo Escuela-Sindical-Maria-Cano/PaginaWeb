@@ -33,8 +33,13 @@ $(document).ready(function() {
             ['font', ['bold', 'clear']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
-            ['view', ['codeview', 'help']]
+            ['view', ['codeview', 'help']],
+            ['insert', ['link', 'picture', 'video']],
         ]
+    });
+
+    $('#descripcion_artista').on('summernote.blur', function() {
+        cambiarValorDescripcion(this)
     });
 
 })
@@ -148,8 +153,17 @@ function cambiarValorInput($this, id) {
 }
 
 function cambiarValorSelect($this, id) {
-    var tipoEvento = parsearEvento($($this).val());
+    var tipoEvento = parsearGenero($($this).val());
     $("#" + id).html(tipoEvento);
+}
+
+function cambiarValorDescripcion($this) {
+    $("#descripcion").html(recortar($($this).val(), 300));
+}
+
+function cambiarVideoYoutube($this) {
+    $(".embed-container").html('<iframe src=https://www.youtube.com/embed/' + parsearYoutubeID($($this).val()) + ' frameborder = "0"> </iframe>');
+
 }
 
 function cambiarValorImagen($this) {
