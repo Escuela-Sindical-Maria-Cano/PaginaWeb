@@ -43,3 +43,49 @@ function agregarGrupoArtista($this) {
     div_artista.find(".enlace").attr("href", "/info/musica/obtener.html?id=" + $this.grupos_artistas_id);
     $("#todos_grupos_artistas ").append(div_artista);
 }
+
+
+function seleccionarCategoria($this, filtro) {
+    $.ajax({
+        url: '/php/grupos_artistas/list.php',
+        data: { limit: 10, ofsset: 0, filtro: filtro },
+        success: function(data) {
+            $("#todos_grupos_artistas").html("");
+            eliminarTodosLosFiltros();
+            $($this).closest("li").addClass("btn btn-sm btn-primary");
+            $($this).closest("li").find(".d-none").removeClass("d-none");
+            var json = $.parseJSON(data);
+            $(json).each(
+                function() {
+                    agregarGrupoArtista(this);
+                });
+        },
+        error: function() {
+            console.log('There was some error performing the AJAX call!');
+        }
+    });
+}
+
+function eliminarTodosLosFiltros() {
+    $(".cat-list").find(".btn-primary").removeClass("btn btn-sm btn-primary");
+    $(".cat-list").find(".eliminar").addClass("d-none");
+}
+
+function eliminarFiltro() {
+    $.ajax({
+        url: '/php/grupos_artistas/list.php',
+        data: { limit: 10, ofsset: 0 },
+        success: function(data) {
+            $("#todos_grupos_artistas").html("");
+            eliminarTodosLosFiltros();
+            var json = $.parseJSON(data);
+            $(json).each(
+                function() {
+                    agregarGrupoArtista(this);
+                });
+        },
+        error: function() {
+            console.log('There was some error performing the AJAX call!');
+        }
+    });
+}

@@ -130,25 +130,25 @@
             <div class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar" id="todos_grupos_artistas">
-                        <article class="blog_item d-none" id="artista_example">
-                            <div class="blog_item_img">
-                                <div class="embed-container"></div>
-                                <a href="#" class="blog_item_date enlace">
-                                    <h3 class="nombre">Nombre Artista</h3>
-                                    <p class="nacionalidad">País</p>
-                                </a>
-                            </div>
-                            <div class="blog_details">
-                                <a class="d-inline-block enlace" href="#">
-                                    <h2 class="genero">Género</h2>
-                                </a>
-                                <p class="descripcion">Descripción.</p>
-                                <a class="btn btn-sm btn-primary display-4 ripple-surface enlace" href="#" style="min-width: 135px;">
-                                    <span class="mobi-mbri mobi-mbri-right mbr-iconfont mbr-iconfont-btn"></span>+ Info</a>
-                            </div>
-                        </article>
                         <!-- <nav class="blog-pagination justify-content-center d-flex"><ul class="pagination"><li class="page-item"><a href="#" class="page-link  bg-dark" aria-label="Previous"><i class="ti-angle-left"></i></a></li><li class="page-item"><a href="#" class="page-link  bg-dark">1</a></li><li class="page-item active"><a href="#" class="page-link  bg-dark">2</a></li><li class="page-item"><a href="#" class="page-link  bg-dark" aria-label="Next"><i class="ti-angle-right"></i></a></li></ul></nav>-->
                     </div>
+                    <article class="blog_item d-none" id="artista_example">
+                        <div class="blog_item_img">
+                            <div class="embed-container"></div>
+                            <a href="#" class="blog_item_date enlace">
+                                <h3 class="nombre">Nombre Artista</h3>
+                                <p class="nacionalidad">País</p>
+                            </a>
+                        </div>
+                        <div class="blog_details">
+                            <a class="d-inline-block enlace" href="#">
+                                <h2 class="genero">Género</h2>
+                            </a>
+                            <p class="descripcion">Descripción.</p>
+                            <a class="btn btn-sm btn-primary display-4 ripple-surface enlace" href="#" style="min-width: 135px;">
+                                <span class="mobi-mbri mobi-mbri-right mbr-iconfont mbr-iconfont-btn"></span>+ Info</a>
+                        </div>
+                    </article>
                 </div>
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
@@ -156,27 +156,39 @@
                             <h4 class="widget_title">Categorías</h4>
                             <ul class="list cat-list">
                                 <li>
-                                    <a href="#" class="d-flex">
+                                    <a href="#" class="d-flex" onclick="seleccionarCategoria(this, 'protesta')">
                                         <p>Canción Protesta</p>
                                         <p id="count_protesta">(0)</p>
                                     </a>
+                                    <a href="#" class="d-none eliminar" onclick="eliminarFiltro()">
+                                        <p class="ml-auto p-2">X</p>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="d-flex">
+                                    <a href="#" class="d-flex" onclick="seleccionarCategoria(this, 'folclorica')">
                                         <p>Canción Folclórica /Popular</p>
                                         <p id="count_folclorica">(0)</p>
                                     </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex">
-                                        <p>Rap y Reggae</p>
-                                        <p id="count_rap">(0)</p>
+                                    <a href="#" class="d-none eliminar" onclick="eliminarFiltro()">
+                                        <p class="ml-auto p-2">X</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="d-flex">
+                                    <a href="#" class="d-flex" onclick="seleccionarCategoria(this, 'rap')">
+                                        <p>Rap y Reggae</p>
+                                        <p id="count_rap">(0)</p>
+                                    </a>
+                                    <a href="#" class="d-none eliminar" onclick="eliminarFiltro()">
+                                        <p class="ml-auto p-2">X</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex" onclick="seleccionarCategoria(this, 'rock')">
                                         <p>Rock</p>
                                         <p id="count_rock">(0)</p>
+                                    </a>
+                                    <a href="#" class="d-none eliminar" onclick="eliminarFiltro()">
+                                        <p class="ml-auto p-2">X</p>
                                     </a>
                                 </li>
                             </ul>
@@ -186,14 +198,14 @@
             </div>
         </div>
     </section>
-    <section class="footer1 cid-s1YVeG8ECw" once="footers" id="footer1-1t">
-        <div class="container">
-            <div class="row mbr-white justify-content-center">
-                <div class="col-12 col-lg-6 col-md-6">
-                    <p class="mbr-text1 align-left mbr-fonts-style align-left display-7">Por un Sindicalismo Independiente y de Nuevo Tipo</p>
+    <section class="footer1 cid-s1YVeG8ECw " once="footers " id="footer1-1t ">
+        <div class="container ">
+            <div class="row mbr-white justify-content-center ">
+                <div class="col-12 col-lg-6 col-md-6 ">
+                    <p class="mbr-text1 align-left mbr-fonts-style align-left display-7 ">Por un Sindicalismo Independiente y de Nuevo Tipo</p>
                 </div>
-                <div class="col-12 col-lg-6 col-md-6">
-                    <p class="mbr-text2 align-right mbr-fonts-style align-left display-7">© 2021 by <a href="/" class=" text-secondary ">Escuela Sindical María Cano</a></p>
+                <div class="col-12 col-lg-6 col-md-6 ">
+                    <p class="mbr-text2 align-right mbr-fonts-style align-left display-7 ">© 2021 by <a href="/ " class=" text-secondary ">Escuela Sindical María Cano</a></p>
                 </div>
             </div>
         </div>

@@ -4,11 +4,12 @@ include_once("../config/configbd.php");
 include_once("../utils/session_extended.php");
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-$limit = 5;
+$limit = 10;
 $offset = 0;
 $neoLimit =  $_GET['limit'];
 $neoOffset =  $_GET['ofsset'];
-if ($neoLimit > 0 && $neoLimit < 5) {
+$filtro = $_GET['filtro'];
+if ($neoLimit > 0 && $neoLimit <10) {
     $limit = $neoLimit;
 }
 
@@ -16,7 +17,12 @@ if ($neoOffset > 0) {
     $offset = $neoOffset;
 }
 
-$stmt = mysqli_prepare($mysqli, "SELECT * FROM grupos_artistas WHERE activo=true ORDER BY grupos_artistas_id DESC LIMIT $offset,$limit");
+if (empty($filtro)) {
+    $stmt = mysqli_prepare($mysqli, "SELECT * FROM grupos_artistas WHERE activo=true ORDER BY grupos_artistas_id DESC LIMIT $offset,$limit");
+} else {
+    $stmt = mysqli_prepare($mysqli, "SELECT * FROM grupos_artistas WHERE activo=true and genero = ? ORDER BY grupos_artistas_id DESC LIMIT $offset,$limit");
+    mysqli_stmt_bind_param($stmt, 's', $filtro);
+}
 
 /* execute query */
 mysqli_stmt_execute($stmt);
