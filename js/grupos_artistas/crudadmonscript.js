@@ -4,7 +4,7 @@ $(document).ready(function() {
         data: { limit: 10, ofsset: 0 },
         success: function(data) {
             var json = $.parseJSON(data);
-            $(json).each(
+            $(json.resultados).each(
                 function() {
                     $('#lista_examinar > tbody').append(
                         '<tr><td>' + this.genero +

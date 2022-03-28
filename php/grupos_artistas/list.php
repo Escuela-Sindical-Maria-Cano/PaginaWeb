@@ -9,7 +9,7 @@ $offset = 0;
 $neoLimit =  $_GET['limit'];
 $neoOffset =  $_GET['ofsset'];
 $filtro = $_GET['filtro'];
-if ($neoLimit > 0 && $neoLimit <10) {
+if ($neoLimit > 0 && $neoLimit < 10) {
     $limit = $neoLimit;
 }
 
@@ -43,4 +43,11 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     array_push($return_arr, $row_array);
 }
 
-echo json_encode($return_arr);
+$stmt = mysqli_prepare($mysqli, "SELECT count(*) as conteo FROM grupos_artistas WHERE activo=true");
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$row = $result->fetch_assoc();
+
+$final_resultado = array('resultados' => $return_arr, 'total' => $row['conteo']);
+
+echo json_encode($final_resultado);

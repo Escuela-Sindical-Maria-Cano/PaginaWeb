@@ -7,7 +7,7 @@ $(document).ready(function() {
         },
         success: function(data) {
             var json = $.parseJSON(data);
-            $(json).each(
+            $(json.resultados).each(
                 function() {
                     agregarGrupoArtista(this);
                 });
@@ -55,7 +55,7 @@ function seleccionarCategoria($this, filtro) {
             $($this).closest("li").addClass("btn btn-sm btn-primary");
             $($this).closest("li").find(".d-none").removeClass("d-none");
             var json = $.parseJSON(data);
-            $(json).each(
+            $(json.resultados).each(
                 function() {
                     agregarGrupoArtista(this);
                 });
@@ -79,7 +79,7 @@ function eliminarFiltro() {
             $("#todos_grupos_artistas").html("");
             eliminarTodosLosFiltros();
             var json = $.parseJSON(data);
-            $(json).each(
+            $(json.resultados).each(
                 function() {
                     agregarGrupoArtista(this);
                 });

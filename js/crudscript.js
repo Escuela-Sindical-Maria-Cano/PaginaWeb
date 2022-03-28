@@ -1,34 +1,30 @@
-$(document).ready(function () {
-    $.ajax(
-        {
-            url: '/php/oauth/get.php',
-            success: function (data) {
-                var json = $.parseJSON(data);
-                $("#login").attr("href", json.href);
-            },
-            error: function () {
-                console.log('There was some error performing the AJAX call!');
-            }
+$(document).ready(function() {
+    $.ajax({
+        url: '/php/oauth/get.php',
+        success: function(data) {
+            var json = $.parseJSON(data);
+            $("#login").attr("href", json.href);
+        },
+        error: function() {
+            console.log('There was some error performing the AJAX call!');
         }
-    );
-    $.ajax(
-        {
-            url: '/php/cursos_eventos/list.php',
-            data: { limit: 3 },
-            success: function (data) {
-                var json = $.parseJSON(data);
-                var evento1 = json[0];
-                var evento2 = json[1];
-                var evento3 = json[2];
-                completarCursoEvento(evento3, 1);
-                completarCursoEvento(evento2, 2);
-                completarCursoEvento(evento1, 3);
-            },
-            error: function () {
-                console.log('There was some error performing the AJAX call!');
-            }
+    });
+    $.ajax({
+        url: '/php/cursos_eventos/list.php',
+        data: { limit: 3 },
+        success: function(data) {
+            var json = $.parseJSON(data);
+            var evento1 = json.resultados[0];
+            var evento2 = json.resultados[1];
+            var evento3 = json.resultados[2];
+            completarCursoEvento(evento3, 1);
+            completarCursoEvento(evento2, 2);
+            completarCursoEvento(evento1, 3);
+        },
+        error: function() {
+            console.log('There was some error performing the AJAX call!');
         }
-    );
+    });
 })
 
 function completarCursoEvento(evento, indice) {
@@ -42,5 +38,5 @@ function completarCursoEvento(evento, indice) {
 
     $("#cursos-evento-skeleton-" + indice).addClass("d-none");
     $("#cursos-evento-card-" + indice).removeClass("d-none");
-    $("#cursos-evento-card-"+indice).attr("onclick", "irAPaginaInterna('cursos_y_eventos/obtener.html?id=" + evento["curso_evento_id"]+"')");
+    $("#cursos-evento-card-" + indice).attr("onclick", "irAPaginaInterna('cursos_y_eventos/obtener.html?id=" + evento["curso_evento_id"] + "')");
 }
