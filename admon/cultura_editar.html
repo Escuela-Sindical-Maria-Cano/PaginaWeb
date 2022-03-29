@@ -136,6 +136,10 @@
 
                     </tbody>
                 </table>
+                <nav class="blog-pagination justify-content-center d-flex" id="paginacion">
+                    <ul class="pagination d-none">
+                    </ul>
+                </nav>
             </div>
             <div id="editar" class="row d-none">
                 <div class="col-8 p-3">
@@ -167,7 +171,7 @@
                             <textarea id="descripcion_artista" name="editordata"></textarea>
                         </div>
                         <div class="form-group">
-                            <label>URL de la playlist de youtube</label>
+                            <label>URL de youtube video de portada</label>
                             <input type="input" id="playlist_artista" class="form-control" onfocusout="cambiarVideoYoutube(this)">
                         </div>
                         <button type="button" class="btn btn-primary mt-3" onclick="guardarGrupoArtista()">Guardar

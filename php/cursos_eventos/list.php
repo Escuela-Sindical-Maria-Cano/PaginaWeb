@@ -7,7 +7,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $limit = 5;
 $offset = 0;
 $neoLimit =  $_GET['limit'];
-$neoOffset =  $_GET['ofsset'];
+$neoOffset =  $_GET['offset'];
 if ($neoLimit > 0 && $neoLimit < 5) {
     $limit = $neoLimit;
 }

@@ -2,15 +2,17 @@ $(document).ready(function() {
     $.ajax({
         url: '/php/grupos_artistas/list.php',
         data: {
-            offset: findGetParameter("pagina") * 5,
+            offset: (findGetParameter("pagina") - 1) * 5,
             limit: 5
         },
         success: function(data) {
             var json = $.parseJSON(data);
+            $("#todos_grupos_artistas").html("");
             $(json.resultados).each(
                 function() {
                     agregarGrupoArtista(this);
                 });
+            calcularPaginacion(json.total, findGetParameter("pagina"), '/info/musica/index.html');
         },
         error: function() {
             console.log('There was some error performing the AJAX call!');
@@ -48,7 +50,7 @@ function agregarGrupoArtista($this) {
 function seleccionarCategoria($this, filtro) {
     $.ajax({
         url: '/php/grupos_artistas/list.php',
-        data: { limit: 10, ofsset: 0, filtro: filtro },
+        data: { limit: 10, offset: 0, filtro: filtro },
         success: function(data) {
             $("#todos_grupos_artistas").html("");
             eliminarTodosLosFiltros();
@@ -74,7 +76,7 @@ function eliminarTodosLosFiltros() {
 function eliminarFiltro() {
     $.ajax({
         url: '/php/grupos_artistas/list.php',
-        data: { limit: 10, ofsset: 0 },
+        data: { limit: 10, offset: 0 },
         success: function(data) {
             $("#todos_grupos_artistas").html("");
             eliminarTodosLosFiltros();
@@ -83,6 +85,7 @@ function eliminarFiltro() {
                 function() {
                     agregarGrupoArtista(this);
                 });
+            calcularPaginacion(json.total, 1, '/info/musica/index.html');
         },
         error: function() {
             console.log('There was some error performing the AJAX call!');

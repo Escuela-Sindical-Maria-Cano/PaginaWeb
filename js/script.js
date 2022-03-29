@@ -67,3 +67,17 @@ function parsearGenero(genero) {
     }
     return resultado;
 }
+
+function calcularPaginacion(total, pagina_actual, href) {
+    if (total > 5) {
+        for (i = 1; i - 1 <= total / 5; i++) {
+            if (i + '' === pagina_actual) {
+                $("#paginacion").find("ul").append('<li class="page-item"><a href="#" class="page-link ">' + i + '</a></li>');
+            } else {
+                $("#paginacion").find("ul").append('<li class="page-item"><a href="' + href + '?pagina=' + i + '" class="page-link  bg-dark">' + i + '</a></li>');
+            }
+
+        }
+        $("#paginacion").find(".pagination").removeClass("d-none");
+    }
+}

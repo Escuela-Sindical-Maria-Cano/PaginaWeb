@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         url: '/php/grupos_artistas/list.php',
-        data: { limit: 10, ofsset: 0 },
+        data: { limit: 5, offset: (findGetParameter("pagina") - 1) * 5 },
         success: function(data) {
             var json = $.parseJSON(data);
             $(json.resultados).each(
@@ -18,6 +18,7 @@ $(document).ready(function() {
                         '<span class="clickeable fa-solid fa-trash" onClick="eliminar(' + this.grupos_artistas_id + ')"></span>' +
                         '</td></tr>')
                 });
+            calcularPaginacion(json.total, findGetParameter("pagina"), '/admon/cultura_editar.html');
         },
         error: function() {
             console.log('There was some error performing the AJAX call!');
