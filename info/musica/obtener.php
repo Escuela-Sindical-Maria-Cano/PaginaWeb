@@ -1,3 +1,18 @@
+<?php
+//including the database connection file
+include_once("../../php/config/configbd.php");
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+$stmt = mysqli_prepare($mysqli, "SELECT * FROM grupos_artistas WHERE grupos_artistas_id = ?");
+mysqli_stmt_bind_param($stmt, 's', $_GET['id']);
+
+/* execute query */
+mysqli_stmt_execute($stmt);
+
+$result = mysqli_stmt_get_result($stmt);
+
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
 <html class="desktop mbr-site-loaded">
 
 <head>
@@ -10,14 +25,14 @@
     <meta name="description" content="Página Web Escuela Sindical María Cano">
 
     <!--  Essential META Tags -->
-    <meta property="og:title" content="Escuela Sindical María Cano. Cursos y Eventos" />
-    <meta property="og:image" itemprop="image" content="http://escuelamariacano.com/assets/images/escuela/logoOvalletrasblancas.png" />
+    <meta property="og:title" content="Escuela Sindical María Cano. Cultura y música proletaria: <? echo $row["nombre"]?>" />
+    <meta property="og:video:url" content="<? echo $row["url_playlist_youtube"]?>" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://escuelamariacano.com" />
+    <meta property="og:url" content="http://escuelamariacano.com/info/musica/obtener.php?id=<? echo $row["grupos_artistas_id"]?>" />
     <meta name="twitter:card" content="summary_large_image" />
 
 
-    <title>Cultura y música proletaria</title>
+    <title>Cultura y música proletaria.<? echo $row["nombre"]?></title>
     <link rel="stylesheet" href="/assets/mdb/css/mdb.min.css" type="text/css" />
     <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
     <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css">
@@ -163,7 +178,7 @@
 
 
                     <p class="mbr-text pb-4 mbr-white mbr-regular mbr-fonts-style display-5">
-                        <a href="/info/musica/index.html">Cultura y música proletaria</a> / <span class="text-white nombre"></span><br>
+                        <a href="/info/musica/index.html">Cultura y música proletaria</a> / <span class="text-white nombre"><? echo $row["nombre"]?></span><br>
                     </p>
 
                 </div>
@@ -180,15 +195,15 @@
                         <div class="card-img-top embed-container"></div>
                         <div class="card-body d-flex flex-row">
                             <div>
-                                <h5 class="card-title font-weight-bold mb-2 nombre">...</h5>
-                                <p class="card-text"><span id="nacionalidad">...</span</p>
+                                <h5 class="card-title font-weight-bold mb-2 nombre"><? echo $row["nombre"]?></h5>
+                                <p class="card-text"><span id="nacionalidad"><? echo $row["nacionalidad"]?></span</p>
                             </div>
                         </div>
                         <div class="card-body" id="descripcion">
-                           
+                        <? echo $row["descripcion"]?>
 
                         </div>
-                        <p class="card-body">Página Web Oficial: <span id="pagina_web"></span</p>
+                        <p class="card-body">Página Web Oficial: <span id="pagina_web"><? echo $row["pagina_web"]?></span</p>
                     </div>
                 </div>
             </div>

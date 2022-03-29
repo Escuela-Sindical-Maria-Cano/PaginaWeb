@@ -42,7 +42,7 @@ function agregarGrupoArtista($this) {
     div_artista.find(".genero").html(parsearGenero($this.genero));
     div_artista.find(".descripcion").html(recortar($this.descripcion, 300));
     div_artista.find(".embed-container").html('<iframe src=https://www.youtube.com/embed/' + parsearYoutubeID($this.url_playlist_youtube) + ' frameborder = "0"> </iframe>');
-    div_artista.find(".enlace").attr("href", "/info/musica/obtener.html?id=" + $this.grupos_artistas_id);
+    div_artista.find(".enlace").attr("href", "/info/musica/obtener.php?id=" + $this.grupos_artistas_id);
     $("#todos_grupos_artistas ").append(div_artista);
 }
 
