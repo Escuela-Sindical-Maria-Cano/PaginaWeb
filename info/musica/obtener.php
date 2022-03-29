@@ -12,6 +12,15 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$youtube_video = str_replace("https://www.youtube.com/watch?", "", $row["url_playlist_youtube"]);
+$tmp = [];
+$youtube_video_array=explode( "&", $youtube_video);
+for ($i = 0; $i < sizeof($youtube_video_array); $i++) {
+    $tmp = explode("=", $youtube_video_array[$i]);
+    if ($tmp[0]== "v"){
+    $youtube_video=$tmp[1];
+    }
+}
 ?>
 <html class="desktop mbr-site-loaded">
 
@@ -26,7 +35,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
     <!--  Essential META Tags -->
     <meta property="og:title" content="Escuela Sindical María Cano. Cultura y música proletaria: <? echo $row["nombre"]?>" />
-    <meta property="og:video:url" content="<? echo $row["url_playlist_youtube"]?>" />
+    <meta property="og:video" content="https://www.youtube.com/v/<? echo $youtube_video?>" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://escuelamariacano.com/info/musica/obtener.php?id=<? echo $row["grupos_artistas_id"]?>" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -192,7 +201,9 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12 md-pb">
                     <div class="card text-white bg-dark">
-                        <div class="card-img-top embed-container"></div>
+                        <div class="card-img-top embed-container">
+                        <iframe src="https://www.youtube.com/embed/<? echo $youtube_video?>" frameborder = "0"> </iframe>
+                        </div>
                         <div class="card-body d-flex flex-row">
                             <div>
                                 <h5 class="card-title font-weight-bold mb-2 nombre"><? echo $row["nombre"]?></h5>
@@ -247,7 +258,6 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     <script src="/assets/formoid/formoid.min.js"></script>
     <script src="/assets/mdb/js/mdb.min.js"></script>
     <script src="/js/script.js"></script>
-    <script src="/js/grupos_artistas/crudscript.js"></script>
 </body>
 
 </html>
