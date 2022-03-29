@@ -36,7 +36,7 @@ for ($i = 0; $i < sizeof($youtube_video_array); $i++) {
     <!--  Essential META Tags -->
     <meta property="og:title" content="Escuela Sindical María Cano. Cultura y música proletaria: <? echo $row["nombre"]?>" />
     <meta property="og:image" itemprop="image"
-        content=https://img.youtube.com/vi/<? echo $youtube_video?>/0.jpg" />
+        content="https://img.youtube.com/vi/<? echo $youtube_video?>/0.jpg" />
     <meta property="og:video" content="https://www.youtube.com/embed/<? echo $youtube_video?>" />
     <meta property="og:type" content="website" />
     <meta property="og:video:type" content="text/html">
