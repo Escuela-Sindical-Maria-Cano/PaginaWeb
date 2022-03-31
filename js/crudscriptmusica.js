@@ -26,6 +26,7 @@ $(document).ready(function() {
             $("#count_protesta").html("(" + json.protesta + ")");
             $("#count_folclorica").html("(" + json.folclorica + ")");
             $("#count_rock").html("(" + json.rock + ")");
+            $("#count_salsa").html("(" + json.salsa + ")");
             $("#count_rap").html("(" + json.rap + ")");
         },
         error: function() {

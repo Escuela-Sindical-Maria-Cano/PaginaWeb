@@ -24,6 +24,11 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 $row4 = $result->fetch_assoc();
 
-$arr = array('protesta' => $row1['conteo'],'folclorica' => $row2['conteo'], 'rap' => $row3['conteo'], 'rock' => $row4['conteo']);
+$stmt = mysqli_prepare($mysqli, "SELECT count(*) as conteo FROM grupos_artistas WHERE activo=true and genero='salsa'");
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$row5 = $result->fetch_assoc();
+
+$arr = array('protesta' => $row1['conteo'],'folclorica' => $row2['conteo'], 'rap' => $row3['conteo'], 'rock' => $row4['conteo'], 'salsa' => $row5['conteo']);
 
 echo json_encode($arr);

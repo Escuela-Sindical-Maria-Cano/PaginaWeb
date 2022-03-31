@@ -62,6 +62,8 @@ function parsearGenero(genero) {
         resultado = "Canción Folclórica";
     } else if (genero === "rock") {
         resultado = "Rock";
+    } else if (genero === "salsa") {
+        resultado = "Salsa";
     } else if (genero === "rap") {
         resultado = "Rap y Reggae";
     }
