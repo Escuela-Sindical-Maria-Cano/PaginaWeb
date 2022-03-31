@@ -22,7 +22,7 @@ $(document).ready(function() {
                         '<span class="clickeable fa-solid fa-trash" onClick="eliminar(' + this.curso_evento_id + ')"></span>' +
                         '</td></tr>')
                 });
-            calcularPaginacion(json.total, findGetParameter("pagina"), '/admon/cursos_eventos_editar.html');
+            calcularPaginacion(json.total, findGetParameter("pagina"), '/admon/cursos_eventos_editar.html?');
 
         },
         error: function() {

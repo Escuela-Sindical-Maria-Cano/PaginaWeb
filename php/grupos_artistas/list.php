@@ -43,7 +43,12 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     array_push($return_arr, $row_array);
 }
 
-$stmt = mysqli_prepare($mysqli, "SELECT count(*) as conteo FROM grupos_artistas WHERE activo=true");
+if (empty($filtro)) {
+    $stmt = mysqli_prepare($mysqli, "SELECT count(*) as conteo FROM grupos_artistas WHERE activo=true");
+} else {
+    $stmt = mysqli_prepare($mysqli, "SELECT count(*) as conteo FROM grupos_artistas WHERE activo=true and genero = ? ");
+    mysqli_stmt_bind_param($stmt, 's', $filtro);
+}
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 $row = $result->fetch_assoc();

@@ -18,7 +18,7 @@ $(document).ready(function() {
                         '<span class="clickeable fa-solid fa-trash" onClick="eliminar(' + this.grupos_artistas_id + ')"></span>' +
                         '</td></tr>')
                 });
-            calcularPaginacion(json.total, findGetParameter("pagina"), '/admon/cultura_editar.html');
+            calcularPaginacion(json.total, findGetParameter("pagina"), '/admon/cultura_editar.html?');
         },
         error: function() {
             console.log('There was some error performing the AJAX call!');

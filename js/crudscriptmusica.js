@@ -3,7 +3,8 @@ $(document).ready(function() {
         url: '/php/grupos_artistas/list.php',
         data: {
             offset: (findGetParameter("pagina") - 1) * 5,
-            limit: 5
+            limit: 5,
+            filtro: findGetParameter("filtro")
         },
         success: function(data) {
             var json = $.parseJSON(data);
@@ -12,7 +13,7 @@ $(document).ready(function() {
                 function() {
                     agregarGrupoArtista(this);
                 });
-            calcularPaginacion(json.total, findGetParameter("pagina"), '/info/musica/index.html');
+            calcularPaginacion(json.total, findGetParameter("pagina"), '/info/musica/index.html?');
         },
         error: function() {
             console.log('There was some error performing the AJAX call!');
@@ -61,6 +62,7 @@ function seleccionarCategoria($this, filtro) {
                 function() {
                     agregarGrupoArtista(this);
                 });
+            calcularPaginacion(json.total, 1, '/info/musica/index.html?filtro=' + filtro + "&");
         },
         error: function() {
             console.log('There was some error performing the AJAX call!');
@@ -85,7 +87,7 @@ function eliminarFiltro() {
                 function() {
                     agregarGrupoArtista(this);
                 });
-            calcularPaginacion(json.total, 1, '/info/musica/index.html');
+            calcularPaginacion(json.total, 1, '/info/musica/index.html?');
         },
         error: function() {
             console.log('There was some error performing the AJAX call!');
