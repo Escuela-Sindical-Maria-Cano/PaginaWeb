@@ -36,7 +36,14 @@ $(document).ready(function() {
             ['para', ['ul', 'ol', 'paragraph']],
             ['view', ['codeview', 'help']],
             ['insert', ['link', 'picture', 'video']],
-        ]
+        ],
+        callbacks: {
+            onPaste(e) {
+                const bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+                e.preventDefault();
+                document.execCommand('insertText', false, bufferText);
+            }
+        }
     });
 
     $('#descripcion_artista').on('summernote.blur', function() {
