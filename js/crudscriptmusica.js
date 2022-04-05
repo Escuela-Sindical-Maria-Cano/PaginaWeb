@@ -115,7 +115,7 @@ function eliminarTodosLosFiltros() {
 function eliminarFiltro() {
     $.ajax({
         url: '/php/grupos_artistas/list.php',
-        data: { limit: 10, offset: 0 },
+        data: { limit: 5, offset: 0 },
         success: function(data) {
             $("#todos_grupos_artistas").html("");
             eliminarTodosLosFiltros();
