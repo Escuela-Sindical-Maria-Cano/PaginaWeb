@@ -20,7 +20,7 @@ $(document).ready(function() {
         }
     });
     $.ajax({
-        url: '/php/grupos_artistas/filtros.php',
+        url: '/php/grupos_artistas/filtrosCategoria.php',
         success: function(data) {
             var json = $.parseJSON(data);
             $("#count_protesta").html("(" + json.protesta + ")");
@@ -28,6 +28,20 @@ $(document).ready(function() {
             $("#count_rock").html("(" + json.rock + ")");
             $("#count_salsa").html("(" + json.salsa + ")");
             $("#count_rap").html("(" + json.rap + ")");
+        },
+        error: function() {
+            console.log('There was some error performing the AJAX call!');
+        }
+    });
+    $.ajax({
+        url: '/php/grupos_artistas/filtrosPais.php',
+        success: function(data) {
+            var json = $.parseJSON(data);
+            for (var name in json) {
+                $("#filtro_paises").append('<li><a href="#" class="d-flex" onclick="seleccionarPais(this, \'' + name + '\')"><p class="text-secondary">' + name + '</p><p>(' + json[name] + ')</p></a><a href="#" class="d-none eliminar" onclick="eliminarFiltro()"><p class="ml-auto p-2">X</p></a></li>');
+
+            }
+
         },
         error: function() {
             console.log('There was some error performing the AJAX call!');
@@ -50,6 +64,28 @@ function agregarGrupoArtista($this) {
 
 
 function seleccionarCategoria($this, filtro) {
+    $.ajax({
+        url: '/php/grupos_artistas/list.php',
+        data: { limit: 10, offset: 0, filtro: filtro },
+        success: function(data) {
+            $("#todos_grupos_artistas").html("");
+            eliminarTodosLosFiltros();
+            $($this).closest("li").addClass("btn btn-sm btn-primary");
+            $($this).closest("li").find(".d-none").removeClass("d-none");
+            var json = $.parseJSON(data);
+            $(json.resultados).each(
+                function() {
+                    agregarGrupoArtista(this);
+                });
+            calcularPaginacion(json.total, 1, '/info/musica/index.html?filtro=' + filtro + "&");
+        },
+        error: function() {
+            console.log('There was some error performing the AJAX call!');
+        }
+    });
+}
+
+function seleccionarPais($this, filtro) {
     $.ajax({
         url: '/php/grupos_artistas/list.php',
         data: { limit: 10, offset: 0, filtro: filtro },

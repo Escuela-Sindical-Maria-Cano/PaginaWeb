@@ -20,8 +20,8 @@ if ($neoOffset > 0) {
 if (empty($filtro)) {
     $stmt = mysqli_prepare($mysqli, "SELECT * FROM grupos_artistas WHERE activo=true ORDER BY grupos_artistas_id DESC LIMIT $offset,$limit");
 } else {
-    $stmt = mysqli_prepare($mysqli, "SELECT * FROM grupos_artistas WHERE activo=true and genero = ? ORDER BY grupos_artistas_id DESC LIMIT $offset,$limit");
-    mysqli_stmt_bind_param($stmt, 's', $filtro);
+    $stmt = mysqli_prepare($mysqli, "SELECT * FROM grupos_artistas WHERE activo=true and (genero = ? or nacionalidad = ?) ORDER BY grupos_artistas_id DESC LIMIT $offset,$limit");
+    mysqli_stmt_bind_param($stmt, 'ss', $filtro, $filtro);
 }
 
 /* execute query */
@@ -46,8 +46,8 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 if (empty($filtro)) {
     $stmt = mysqli_prepare($mysqli, "SELECT count(*) as conteo FROM grupos_artistas WHERE activo=true");
 } else {
-    $stmt = mysqli_prepare($mysqli, "SELECT count(*) as conteo FROM grupos_artistas WHERE activo=true and genero = ? ");
-    mysqli_stmt_bind_param($stmt, 's', $filtro);
+    $stmt = mysqli_prepare($mysqli, "SELECT count(*) as conteo FROM grupos_artistas WHERE activo=true and (genero = ? or nacionalidad = ?) ");
+    mysqli_stmt_bind_param($stmt, 'ss', $filtro, $filtro);
 }
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
