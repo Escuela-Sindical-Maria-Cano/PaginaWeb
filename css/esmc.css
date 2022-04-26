@@ -62,6 +62,10 @@
     background-image: url("../assets/images/escuela/eventos/encuentro_banner_final.jpeg");
 }
 
+.banner_primero_mayo_2022 {
+    background-image: url("../assets/images/escuela/eventos/publicaciones_primero_mayo.png");
+}
+
 .boton_azul {
     color: white !important;
     background-color: #007bff;
