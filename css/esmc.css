@@ -66,6 +66,10 @@
     background-image: url("../assets/images/escuela/eventos/publicaciones_primero_mayo.png");
 }
 
+.banner_carlos_marx {
+    background-image: url("../assets/images/luchas_imagenes_procesadas/carlos_marx.png");
+}
+
 .boton_azul {
     color: white !important;
     background-color: #007bff;
