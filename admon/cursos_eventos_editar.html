@@ -1,0 +1,243 @@
+<html class="desktop mbr-site-loaded">
+
+<head>
+    <!-- Site made with Mobirise Website Builder v5.0.2, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v5.0.2, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="/assets/images/escuela/favicon.png" type="image/x-icon">
+    <meta name="description" content="Página Web Escuela Sindical María Cano">
+
+    <!--  Essential META Tags -->
+    <meta property="og:title" content="Escuela Sindical María Cano. Por un Sindicalismo Independiente y de Nuevo Tipo" />
+    <meta property="og:image" itemprop="image" content="http://escuelamariacano.com/assets/images/escuela/logoOvalletrasblancas.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://escuelamariacano.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+
+    <title>Escuela Sindical María Cano. Administración</title>
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/assets/mdb/css/mdb.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
+    <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css">
+    <link rel="stylesheet" href="/assets/bootstrap/5.1/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/theme/css/style.css">
+    <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+    <link rel="stylesheet" href="/css/esmc.css" type="text/css">
+    <link rel="stylesheet" href="/assets/datepicker/jquery.datetimepicker.min.css">
+
+    <!-- include summernote css/js -->
+    <link href="/assets/summernote-0.8.18-dist/summernote-lite.min.css" rel="stylesheet">
+
+    <!-- Favicons -->
+
+    <script src="https://kit.fontawesome.com/0a5e514ac5.js" crossorigin="anonymous"></script>
+
+    <meta name="theme-color" content="#7952b3">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+        
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        
+        #cursos-eventos-imagen-0 {
+            width: 100%;
+            height: 260px;
+            background-position: center center;
+            background: url(/assets/images/escuela/logoOvalletrasblancas.png);
+            background-color: #000;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: inline-block;
+            box-shadow: 0px -3px 6px 2px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="/css/admon.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <img src="/assets/images/escuela/logoOvalletrasblancas.png" width="60px" />
+                <span class="fs-4">Configuración</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="/admon/cursos_eventos_editar.html" class="nav-link active" aria-current="page" id="enlace-cursos-eventos">
+                        Cursos y Eventos
+                    </a>
+                </li>
+                <li>
+                    <a href="/admon/cultura_editar.html" class="nav-link text-white">
+                        Cultura y música proletaria
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white">
+                        Gaceta Sindical
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <strong>Administrador</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">Perfil</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Salir</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="b-example-divider"></div>
+
+        <div class="bd-content ps-lg-4 w-100">
+            <h3>Editar Cursos y Eventos</h3>
+            <p>Los últimos 3 cursos y eventos, ordenados por fecha, serán presentados en la página inicial</p>
+            <button type="button" class="btn btn-primary" onclick="agregarNuevoCursoEvento()">Agregar nuevo curso o
+                evento</button>
+            <div class="bd-example">
+                <table id="lista_examinar" class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Tipo de evento</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Lugar</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <nav class="blog-pagination justify-content-center d-flex" id="paginacion">
+                    <ul class="pagination d-none">
+                    </ul>
+                </nav>
+            </div>
+            <div id="editar" class="row d-none">
+                <div class="col-8 p-3">
+                    <form>
+                        <h4>Editar el curso o evento</h4>
+                        <div class="form-group">
+                            <label>Tipo de Evento</label>
+                            <select class="form-control" id="tipo_evento" onchange="cambiarValorSelect(this,'cursos-eventos-tipo-0')">
+                                <option value="historia">Conmemoración Histórica</option>
+                                <option value="curso">Curso o Evento educativo</option>
+                                <option value="prostesta">Protesta</option>
+                                <option value="stream">Streaming</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Título</label>
+                            <input type="input" id="titulo_evento" class="form-control" onfocusout="cambiarValorInput(this,'cursos-eventos-titulo-0')">
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha Inicio</label>
+                            <input type="text" id="fecha_evento" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha Legible</label>
+                            <input type="text" id="fecha_legible_evento" class="form-control" onfocusout="cambiarValorInput(this,'cursos-eventos-horario-0')">
+                        </div>
+                        <div class="form-group">
+                            <label>Lugar</label>
+                            <input type="input" id="lugar_evento" class="form-control" onfocusout="cambiarValorInput(this,'cursos-eventos-lugar-0')">
+                        </div>
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <textarea id="descripcion_evento" name="editordata"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Imagen</label>
+                            <input type="file" class="form-control" id="image_file_evento" onChange="cambiarValorImagen(this)" />
+                            <div class="form-text">Usar sólo si desea subir una imagen o cambiar la existente</div>
+                        </div>
+                        <button type="button" class="btn btn-primary mt-3" onclick="guardarEvento()">Guardar
+                            Evento</button>
+                        <div class="alert alert-danger d-none" role="alert" id="problema_creando_Evento">
+                            <h4 class="alert-heading">Tuvimos un problema!</h4>
+                            <p>No pudimos crear el evento, por favor probar lo siguiente:
+                                <ul>
+                                    <li>Probar con una imagen con menor tamaño</li>
+                                    <li>Verificar el tipo de la imagen (png, jpeg, jpg, gif)</li>
+                                </ul>
+                            </p>
+
+                            <hr>
+                            <p class="mb-0">Si este problema persiste por favor comunicarse con el/la administradora de la página.</p>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-4">
+                    <h5>Previo</h5>
+                    <div class="row justify-content-center cid-s1YM3FtOOn  mbr-white">
+                        <div class="card md-pb first col-12">
+                            <div class="card-wrapper align-center" id="cursos-evento-card-0">
+                                <div class="card-box align-center">
+                                    <h4 class="mbr-section-title pb-2 mbr-semibold mbr-fonts-style display-6" id="cursos-eventos-tipo-0">Live</h4>
+
+                                    <div class="img-wrapper">
+                                        <div id="cursos-eventos-imagen-0"></div>
+                                    </div>
+                                    <p class="mbr-section-text align-center mbr-regular mbr-bold pb-2 mbr-fonts-style display-5" id="cursos-eventos-titulo-0">
+                                        ... </p>
+                                    <p class="mbr-section-text align-center mbr-regular pb-2 mbr-fonts-style display-7">
+                                        <span class="mobi-mbri mobi-mbri-map-pin mbr-iconfont mbr-iconfont-btn"></span>
+                                        <span id="cursos-eventos-lugar-0">...</span><br />
+                                        <span class="mobi-mbri mobi-mbri-calendar mbr-iconfont mbr-iconfont-btn"></span>
+                                        <span id="cursos-eventos-horario-0">...</span>
+                                    </p>
+                                </div>
+                                <div class="mbr-section-btn">
+                                    <a id="cursos-eventos-masinfo-0" class="btn btn-sm btn-primary display-4" href="cursos_y_eventos/index.html#envivo_30_minutos_2022">
+                                        <span class="mobi-mbri mobi-mbri-right mbr-iconfont mbr-iconfont-btn"></span>+ Info
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/assets/bootstrap/5.1/bootstrap.bundle.min.js"></script>
+    <script src="/assets/web/assets/jquery/jquery.min.js"></script>
+    <script src="/assets/datepicker/jquery.datetimepicker.full.js"></script>
+    <script src="/assets/mdb/js/mdb.min.js"></script>
+    <script src="/js/curso_evento/crudadmonscript.js"></script>
+    <script src="/assets/summernote-0.8.18-dist/summernote-lite.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/crudscript.js"></script>
+</body>
+
+</html>

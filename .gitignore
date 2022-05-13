@@ -10,3 +10,5 @@ npm-debug.log
 # Docker
 Dockerfile
 docker-compose.yml
+php/config/*
+php/cursos_eventos/upload/*
