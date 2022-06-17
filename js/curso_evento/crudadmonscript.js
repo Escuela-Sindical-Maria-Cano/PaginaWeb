@@ -82,7 +82,7 @@ function editar(id) {
 
 function agregarNuevoCursoEvento() {
     $("#editar").addClass("d-none");
-    $("#editar").removeAttr("idCursoEvento");
+    $("#editar").attr("idCursoEvento", "");
     $("#tipo_evento").val("streaming").change();
     $("#titulo_evento").val("");
     $("#fecha_evento").val("");
