@@ -74,6 +74,9 @@
     background-image: url("../banner_carrusel/banner_denuncia.png");
 }
 
+.banner_mitin_lloreda_092122 {
+    background-image: url("../banner_carrusel/banner_mitin.png");
+}
 .boton_azul {
     color: white !important;
     background-color: #007bff;
