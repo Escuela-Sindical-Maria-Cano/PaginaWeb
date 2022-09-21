@@ -70,6 +70,10 @@
     background-image: url("../assets/images/luchas_imagenes_procesadas/carlos_marx.png");
 }
 
+.banner_denuncia_opresion {
+    background-image: url("../banner_carrusel/banner_denuncia.png");
+}
+
 .boton_azul {
     color: white !important;
     background-color: #007bff;
