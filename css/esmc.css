@@ -77,6 +77,10 @@
 .banner_mitin_lloreda_092122 {
     background-image: url("../banner_carrusel/banner_mitin.png");
 }
+
+.banner_curso_2022 {
+    background-image: url("../banner_carrusel/banner_curso_2022.png");
+}
 .boton_azul {
     color: white !important;
     background-color: #007bff;
