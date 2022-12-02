@@ -81,6 +81,11 @@
 .banner_curso_2022 {
     background-image: url("../banner_carrusel/banner_curso_2022.png");
 }
+
+.banner_curso_sintraupn_2022 {
+    background-image: url("../banner_carrusel/banner_curso_sintraupn.png");
+}
+
 .boton_azul {
     color: white !important;
     background-color: #007bff;
