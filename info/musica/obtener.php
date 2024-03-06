@@ -126,7 +126,7 @@ for ($i = 0; $i < sizeof($youtube_video_array); $i++) {
                 <div class="navbar-brand col-10 col-md-10 col-lg-6">
                     <div class="navbar-caption-wrap">
                         <a href="/" class="pr-1">
-                            <img src="/assets/images/escuela/logoOvalletrasblancas.png" width="60px">
+                            <img src="/assets/images/escuela/logoOvalletrasblancas.png" width="80px">
                         </a>
                         <div class="navbar-caption-wrap d-flex flex-column">
                             <div>
