@@ -196,13 +196,9 @@
                             echo '    <div class="panel-body">';
                             echo '       <p class="mbr-fonts-style mbr-regular mbr-text panel-text display-7">';
                             echo $row['descripcion'].'</p>';
-                            echo '<div><p class="mbr-fonts-style mbr-regular mbr-text panel-text display-5 text-info">Visualización de la presentación:</p>';
-                            echo '<div class="mbr-media align-center py-2" data-modal=".modalWindow">';
-                            echo '<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=['.$row['url_material'].'" width="100%" height="600px" frameborder="0">';
-                            echo '</div>';
-                            echo '<p class="mbr-fonts-style mbr-regular mbr-text panel-text display-7">';
+                            echo '<p class="mbr-fonts-style mbr-regular mbr-text panel-text display-5 text-info">Visualización de la presentación:</p>';
+                            echo '<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=['.$row['url_material'].'" width="100%" height="600px" frameborder="0"></iframe>';
                             echo '<a href="'.$row['url_material'].'">Enlace de descarga <span class="sign mbr-iconfont mbri-save inactive"></span></a>';
-                            echo '</p></div>';
                             echo '   </div>';
                             echo '</div>';
                             echo '</div>';
