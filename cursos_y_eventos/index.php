@@ -1,16 +1,3 @@
-<?php
-//including the database connection file
-include_once("../php/config/configbd.php");
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-
-$stmt = mysqli_prepare($mysqli, "SELECT * FROM material  WHERE activo=true ORDER BY fecha DESC");
-
-/* execute query */
-mysqli_stmt_execute($stmt);
-
-$result = mysqli_stmt_get_result($stmt);
-
-?>
 <html class="desktop mbr-site-loaded">
 
 <head>
@@ -184,27 +171,20 @@ $result = mysqli_stmt_get_result($stmt);
                     </div>
                     <div class="clearfix"></div>
                     <div id="bootstrap-toggle" class="toggle-panel accordionStyles tab-content">
-                        <?php
+                    <?php
+                        //including the database connection file
+                        include_once("../php/config/configbd.php");
+                        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+                        $stmt = mysqli_prepare($mysqli, "SELECT * FROM material  WHERE activo=true ORDER BY fecha DESC");
+
+                        /* execute query */
+                        mysqli_stmt_execute($stmt);
+
+                        $result = mysqli_stmt_get_result($stmt);
                         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                        ?>
-                        <div class="card">
-                            <div class="card-header" role="tab" id="heading<?php$row['material_id'];?>">
-                                <a role="button" class="collapsed panel-title" data-toggle="collapse" data-core=""
-                                    href="#collapse1_<?php$row['material_id'];?>" aria-expanded="false" aria-controls="collapse<? echo $row['material_id'];?>">
-                                    <h4 class="mbr-regular mbr-fonts-style display-7"><? echo $row['titulo'];?>
-                                    </h4>
-                                    <span class="sign mbr-iconfont mbri-plus inactive"></span>
-                                </a>
-                            </div>
-                            <div id="collapse1_<?php$row['material_id'];?>" class="panel-collapse noScroll collapse" role="tabpanel"
-                                aria-labelledby="heading<? echo $row['material_id'];?>">
-                                <div class="panel-body">
-                                    <p class="mbr-fonts-style mbr-regular mbr-text panel-text display-7">
-                                    <? echo $row['descripcion'];?></p>
-                                </div>
-                            </div>
-                        </div>
-                        <?}
+                            echo $row['titulo'];
+                        }
                         ?>
                     </div>
                 </div>
