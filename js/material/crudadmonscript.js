@@ -90,7 +90,7 @@ function agregarNuevoMaterial() {
 
 function guardarMaterial() {
     var data = new FormData();
-    data.append('archivo_material', $('#archivo_file_evento').prop('files')[0]);
+    data.append('archivo_material', $('#archivo_material').prop('files')[0]);
     data.append('tipo_material', $("#tipo_material").val());
     data.append('titulo_material', $("#titulo_material").val());
     data.append('fecha_material', $("#fecha_material").val());
