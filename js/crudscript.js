@@ -9,22 +9,6 @@ $(document).ready(function() {
             console.log('There was some error performing the AJAX call!');
         }
     });
-    $.ajax({
-        url: '/php/cursos_eventos/list.php',
-        data: { limit: 3 },
-        success: function(data) {
-            var json = $.parseJSON(data);
-            var evento1 = json.resultados[0];
-            var evento2 = json.resultados[1];
-            var evento3 = json.resultados[2];
-            completarCursoEvento(evento3, 1);
-            completarCursoEvento(evento2, 2);
-            completarCursoEvento(evento1, 3);
-        },
-        error: function() {
-            console.log('There was some error performing the AJAX call!');
-        }
-    });
 })
 
 function completarCursoEvento(evento, indice) {
