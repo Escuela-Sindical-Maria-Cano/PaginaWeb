@@ -186,7 +186,7 @@
                             echo '<div class="card">';
                             echo '<div class="card-header" role="tab" id="heading'.$row['material_id'].'">';
                             echo '   <a role="button" class="collapsed panel-title" data-toggle="collapse" data-core=""';
-                            echo '       href="#collapse1_'.$row['material_id'].'" aria-expanded="false" aria-controls="collapse'.$row['material_id']'">';
+                            echo '       href="#collapse1_'.$row['material_id'].'" aria-expanded="false" aria-controls="collapse'.$row['material_id'].'">';
                             echo '       <h4 class="mbr-regular mbr-fonts-style display-7">'.$row['titulo'].'</h4>';
                             echo '       <span class="sign mbr-iconfont mbri-plus inactive"></span>';
                             echo '   </a>';
