@@ -190,21 +190,21 @@ $result = mysqli_stmt_get_result($stmt);
                         <div class="card">
                             <div class="card-header" role="tab" id="heading<?php$row['material_id'];?>">
                                 <a role="button" class="collapsed panel-title" data-toggle="collapse" data-core=""
-                                    href="#collapse1_<?php$row['material_id'];?>" aria-expanded="false" aria-controls="collapse<?php$row['material_id'];?>">
-                                    <h4 class="mbr-regular mbr-fonts-style display-7"><?php$row['titulo'];?>
+                                    href="#collapse1_<?php$row['material_id'];?>" aria-expanded="false" aria-controls="collapse<? echo $row['material_id'];?>">
+                                    <h4 class="mbr-regular mbr-fonts-style display-7"><? echo $row['titulo'];?>
                                     </h4>
                                     <span class="sign mbr-iconfont mbri-plus inactive"></span>
                                 </a>
                             </div>
                             <div id="collapse1_<?php$row['material_id'];?>" class="panel-collapse noScroll collapse" role="tabpanel"
-                                aria-labelledby="heading<?php$row['material_id'];?>">
+                                aria-labelledby="heading<? echo $row['material_id'];?>">
                                 <div class="panel-body">
                                     <p class="mbr-fonts-style mbr-regular mbr-text panel-text display-7">
-                                    <?php$row['descripcion'];?></p>
+                                    <? echo $row['descripcion'];?></p>
                                 </div>
                             </div>
                         </div>
-                        <?php}
+                        <?}
                         ?>
                     </div>
                 </div>
