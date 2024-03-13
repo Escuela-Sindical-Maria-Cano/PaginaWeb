@@ -1,6 +1,6 @@
 <?php
 //including the database connection file
-include_once("../../php/config/configbd.php");
+include_once("../php/config/configbd.php");
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 $stmt = mysqli_prepare($mysqli, "SELECT * FROM material  WHERE activo=true ORDER BY fecha DESC");
