@@ -1,3 +1,16 @@
+<?php
+//including the database connection file
+include_once("../../php/config/configbd.php");
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+$stmt = mysqli_prepare($mysqli, "SELECT * FROM material  WHERE activo=true ORDER BY fecha DESC");
+
+/* execute query */
+mysqli_stmt_execute($stmt);
+
+$result = mysqli_stmt_get_result($stmt);
+
+?>
 <html class="desktop mbr-site-loaded">
 
 <head>
@@ -82,7 +95,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
                         <li class="nav-item">
-                            <a class="nav-link link text-white display-4" href="/cursos_y_eventos/index.html">Cursos y
+                            <a class="nav-link link text-white display-4" href="//cursos_y_eventos/index.php">Cursos y
                                 Eventos</a>
                         </li>
                         <li class="nav-item">
@@ -152,6 +165,50 @@
                 </div>
             </div>
         </div>
+        </div>
+    </section>
+
+    <section class="accordion1 cid-s1YTSnjHm1" id="accordions1-17">
+
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="section-head text-center">
+                        <h2 class="mbr-section-title mbr-bold pb-2 mbr-fonts-style display-2">
+                            Nuestros cursos</h2>
+                        <p class="mbr-section-text align-center pb-4 mbr-regular mbr-black mbr-fonts-style display-7">
+                            A continuación podrá descargar las presentaciones y guías de nuestros cursos</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div id="bootstrap-toggle" class="toggle-panel accordionStyles tab-content">
+                        <?php
+                        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                        ?>
+                        <div class="card">
+                            <div class="card-header" role="tab" id="heading<?php$row['material_id'];?>">
+                                <a role="button" class="collapsed panel-title" data-toggle="collapse" data-core=""
+                                    href="#collapse1_<?php$row['material_id'];?>" aria-expanded="false" aria-controls="collapse<?php$row['material_id'];?>">
+                                    <h4 class="mbr-regular mbr-fonts-style display-7"><?php$row['titulo'];?>
+                                    </h4>
+                                    <span class="sign mbr-iconfont mbri-plus inactive"></span>
+                                </a>
+                            </div>
+                            <div id="collapse1_<?php$row['material_id'];?>" class="panel-collapse noScroll collapse" role="tabpanel"
+                                aria-labelledby="heading<?php$row['material_id'];?>">
+                                <div class="panel-body">
+                                    <p class="mbr-fonts-style mbr-regular mbr-text panel-text display-7">
+                                    <?php$row['descripcion'];?></p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php}
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
