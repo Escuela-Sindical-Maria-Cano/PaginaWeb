@@ -15,9 +15,9 @@ $(document).ready(function() {
                         '</td><td>' +
                         recortar(this.descripcion, 200) +
                         '</td><td class="text-center">' +
-                        '<span class="clickeable fa-solid fa-pen-to-square" onClick="editar(' + this.curso_evento_id + ')"></span>' +
+                        '<span class="clickeable fa-solid fa-pen-to-square" onClick="editar(' + this.material_id + ')"></span>' +
                         '</td><td class="text-center">' +
-                        '<span class="clickeable fa-solid fa-trash" onClick="eliminar(' + this.curso_evento_id + ')"></span>' +
+                        '<span class="clickeable fa-solid fa-trash" onClick="eliminar(' + this.material_id + ')"></span>' +
                         '</td></tr>')
                 });
             calcularPaginacion(json.total, findGetParameter("pagina"), '/admon/materiales_editar.html?');
@@ -90,6 +90,7 @@ function agregarNuevoMaterial() {
 
 function guardarMaterial() {
     var data = new FormData();
+    data.append('archivo_material', $('#archivo_file_evento').prop('files')[0]);
     data.append('tipo_material', $("#tipo_material").val());
     data.append('titulo_material', $("#titulo_material").val());
     data.append('fecha_material', $("#fecha_material").val());

@@ -89,7 +89,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/admon/materiales_guias.html" class="nav-link active">
+                    <a href="/admon/materiales_guias.html" class="nav-link active" id="enlace-material">
                         Material y guías
                     </a>
                 </li>
@@ -168,6 +168,11 @@
                         <div class="form-group">
                             <label>Descripción</label>
                             <textarea id="descripcion_material" name="editordata"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Archivo</label>
+                            <input type="file" class="form-control" id="archivo_material" />
+                            <div class="form-text">Usar sólo si desea subir un archivo o cambiar el existente</div>
                         </div>
                         <button type="button" class="btn btn-primary mt-3" onclick="guardarMaterial()">Guardar
                             Material</button>
