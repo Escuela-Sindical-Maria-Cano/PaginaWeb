@@ -183,7 +183,22 @@
 
                         $result = mysqli_stmt_get_result($stmt);
                         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                            echo $row['titulo'];
+                            echo '<div class="card">'
+                            echo '<div class="card-header" role="tab" id="heading'.$row['material_id'].'">'
+                            echo '   <a role="button" class="collapsed panel-title" data-toggle="collapse" data-core=""'
+                            echo '       href="#collapse1_'.$row['material_id'].'" aria-expanded="false" aria-controls="collapse'.$row['material_id']'">'
+                            echo '       <h4 class="mbr-regular mbr-fonts-style display-7">'.$row['titulo'].'</h4>'
+                            echo '       <span class="sign mbr-iconfont mbri-plus inactive"></span>'
+                            echo '   </a>'
+                            echo '</div>'
+                            echo '<div id="collapse1_'.$row['material_id'].'" class="panel-collapse noScroll collapse" role="tabpanel"'
+                            echo '    aria-labelledby="heading'.$row['material_id'].'">'
+                            echo '    <div class="panel-body">'
+                            echo '       <p class="mbr-fonts-style mbr-regular mbr-text panel-text display-7">'
+                            echo $row['descripcion'].'</p>'
+                            echo '   </div>'
+                            echo '</div>'
+                            echo '</div>'
                         }
                         ?>
                     </div>
